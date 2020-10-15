@@ -26,7 +26,7 @@ import System.FilePath
 import qualified Data.Map as M
 import System.Environment
 import System.Exit
-import System.Directory (listDirectory)
+import System.Directory (listDirectory, doesDirectoryExist)
 import System.IO (stderr)
 
 type CiteprocAPI =
@@ -41,16 +41,19 @@ server1 styleMap = citeprocServer
  where
   citeprocServer inputs = do
     style <- case inputsStyle inputs of
-                    Just s  ->
+                    Just s | T.any (=='<') s  -> do -- parse XML
+                      parseResult <- parseStyle (\_ -> return mempty) s
+                      case parseResult of
+                         Left e -> throwError $
+                           err500 { errBody = BL.fromStrict $
+                              TE.encodeUtf8 $ prettyCiteprocError e }
+                         Right sty -> return sty
+                    Just s ->
                       case M.lookup (T.strip . T.toLower $ s) styleMap of
                         Just sty -> return sty
-                        Nothing -> do -- parse XML
-                          parseResult <- parseStyle (\_ -> return mempty) s
-                          case parseResult of
-                             Left e -> throwError $
-                               err500 { errBody = BL.fromStrict $
-                                  TE.encodeUtf8 $ prettyCiteprocError e }
-                             Right sty -> return sty
+                        Nothing -> throwError $
+                            err500 { errBody = BL.fromStrict $
+                            TE.encodeUtf8 $ "Unknown style " <> s }
                     Nothing -> throwError $
                        err500 { errBody = "No style specified" }
     let lang = inputsLang inputs
@@ -68,13 +71,25 @@ app styleMap = serve citeprocAPI (server1 styleMap)
 
 main :: IO ()
 main = do
-  args <- getArgs
-  stylePaths <- mconcat <$>
-    mapM (\dir -> map (dir </>) <$> listDirectory dir) args
-  styleMap <- foldM addStyle mempty $
-                filter ((== ".csl") . takeExtension) stylePaths
-  TIO.putStrLn $ "Loaded styles:"
-  mapM_ TIO.putStrLn $ M.keys styleMap
+  mbStylePath <- lookupEnv "CSL_STYLES"
+  let getCslFiles fp = do
+        exists <- doesDirectoryExist fp
+        if exists
+           then map (fp </>) . filter ((== ".csl") . takeExtension)
+                 <$> listDirectory fp
+           else return []
+  stylePaths <-
+    case mbStylePath of
+      Just stylePath ->
+        (++) <$> getCslFiles stylePath
+             <*> getCslFiles (stylePath </> "dependent")
+      Nothing -> do
+        TIO.putStrLn "No styles loaded.  Set the CSL_STYLES environment"
+        TIO.putStrLn "variable to the directory containing CSL styles."
+        return []
+  TIO.putStrLn "Loading style map...stand by..."
+  styleMap <- foldM addStyle mempty stylePaths
+  TIO.putStrLn "Serving citeproc API at port 8081"
   run 8081 (app styleMap)
 
 type StyleMap = M.Map Text (Style (CslJson Text))
@@ -82,7 +97,6 @@ type StyleMap = M.Map Text (Style (CslJson Text))
 addStyle :: StyleMap -> FilePath -> IO StyleMap
 addStyle m fp = do
   let name = T.pack $ dropExtension $ takeBaseName fp
-  TIO.putStrLn $ "Loading " <> name <> "..."
   txt <- TIO.readFile fp
   res <- parseStyle (\url ->
               TIO.readFile ("styles"
@@ -94,4 +108,5 @@ addStyle m fp = do
              Left e  -> do
                TIO.hPutStrLn stderr $ prettyCiteprocError e
                exitWith $ ExitFailure 1
+  TIO.putStrLn name
   return $ M.insert name style m
