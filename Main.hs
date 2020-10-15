@@ -13,7 +13,6 @@ import Control.Monad
 import Control.Monad.Except
 import Citeproc
 import Citeproc.CslJson
-import System.Clock (TimeSpec(..))
 import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.IO as TIO
@@ -49,12 +48,23 @@ err :: Text -> Handler a
 err t =
   throwError $ err500 { errBody = BL.fromStrict $ TE.encodeUtf8 t }
 
-server1 :: Server CiteprocAPI
-server1 = citeprocServer
+server1 :: StyleCache -> Server CiteprocAPI
+server1 cache = citeprocServer
  where
   citeprocServer inputs mbSty mbLang = do
     style <- case mbSty of
-               Just s -> loadNamedStyle s
+               Just s -> do
+                 cachedSty <- liftIO $ Data.Cache.lookup cache s
+                 case cachedSty of
+                   Just sty -> return sty
+                   Nothing  -> do
+                     sty <- loadNamedStyle s
+                     liftIO $ do
+                       Data.Cache.insert cache s sty
+                       csize <- Data.Cache.size cache
+                       when (csize > 100) $
+                         Data.Cache.purge cache
+                     return sty
                Nothing ->
                  case inputsStyle inputs of
                     Just s | T.all (\c -> isAlphaNum c || c == '-') s
@@ -75,8 +85,10 @@ server1 = citeprocServer
                       references
                       citations
 
-app :: Application
-app = serve citeprocAPI server1
+type StyleCache = Cache Text (Style (CslJson Text))
+
+app :: StyleCache -> Application
+app cache = serve citeprocAPI (server1 cache)
 
 loadNamedStyle :: Text -> Handler (Style (CslJson Text))
 loadNamedStyle s = do
@@ -100,11 +112,9 @@ loadNamedStyle s = do
         Left e -> err $ prettyCiteprocError e
         Right sty -> return sty
 
-type StyleMap = M.Map Text (Style (CslJson Text))
-
 main :: IO ()
 main = do
-  (cache :: Cache Text StyleMap) <- newCache (Just $ TimeSpec 60 0)
+  (cache :: StyleCache) <- newCache Nothing
   mbStylePath <- lookupEnv "CSL_STYLES"
   let getCslFiles fp = do
         exists <- doesDirectoryExist fp
@@ -122,5 +132,5 @@ main = do
         TIO.putStrLn "variable to the directory containing CSL styles."
         return []
   TIO.putStrLn "Serving citeproc API at port 8081"
-  run 8081 app
+  run 8081 (app cache)
 
