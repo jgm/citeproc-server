@@ -1,3 +1,4 @@
+{-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE DataKinds #-}
@@ -12,6 +13,7 @@ import Control.Monad
 import Control.Monad.Except
 import Citeproc
 import Citeproc.CslJson
+import System.Clock (TimeSpec(..))
 import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.IO as TIO
@@ -32,6 +34,7 @@ import System.IO (stderr)
 import Data.Char (isAlphaNum)
 import Control.Monad.Trans (liftIO)
 import Control.Applicative
+import Data.Cache
 
 type CiteprocAPI =
   "citeproc" :> ReqBody '[JSON] (Inputs (CslJson Text))
@@ -97,8 +100,11 @@ loadNamedStyle s = do
         Left e -> err $ prettyCiteprocError e
         Right sty -> return sty
 
+type StyleMap = M.Map Text (Style (CslJson Text))
+
 main :: IO ()
 main = do
+  (cache :: Cache Text StyleMap) <- newCache (Just $ TimeSpec 60 0)
   mbStylePath <- lookupEnv "CSL_STYLES"
   let getCslFiles fp = do
         exists <- doesDirectoryExist fp

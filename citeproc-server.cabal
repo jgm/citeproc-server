@@ -32,6 +32,8 @@ executable citeproc-server
                        filepath,
                        containers,
                        mtl,
+                       clock,
+                       cache >= 0.1 && < 0.2,
                        directory >= 1.2.5,
                        warp >= 3.3 && < 3.4
 
