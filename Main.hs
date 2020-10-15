@@ -82,9 +82,12 @@ type StyleMap = M.Map Text (Style (CslJson Text))
 addStyle :: StyleMap -> FilePath -> IO StyleMap
 addStyle m fp = do
   let name = T.pack $ dropExtension $ takeBaseName fp
+  TIO.putStrLn $ "Loading " <> name <> "..."
   txt <- TIO.readFile fp
   res <- parseStyle (\url ->
-              TIO.readFile (T.unpack $ "styles/" <> T.dropWhileEnd (/='/') url))
+              TIO.readFile ("styles"
+                </> T.unpack (T.takeWhileEnd (/='/') url)
+                <.> "csl"))
               txt
   style <- case res of
              Right x -> return x
