@@ -20,10 +20,11 @@ import Network.Wai
 import Network.Wai.Handler.Warp
 import Data.Maybe
 import Data.Text.Encoding as TE
-import Data.ByteString.Lazy as BL
+import qualified Data.ByteString.Lazy as BL
 import Data.ByteString (ByteString)
 import System.FilePath
 import qualified Data.Map as M
+import System.Environment
 import System.Exit
 import System.Directory (listDirectory)
 import System.IO (stderr)
@@ -35,44 +36,50 @@ type CiteprocAPI =
 citeprocAPI :: Proxy CiteprocAPI
 citeprocAPI = Proxy
 
-server1 :: Server CiteprocAPI
-server1 = citeprocServer
+server1 :: StyleMap -> Server CiteprocAPI
+server1 styleMap = citeprocServer
  where
   citeprocServer inputs = do
-    stylesheet <- case inputsStyle inputs of
-                    Just s  -> return s
-                    Nothing ->
-                      throwError $ err500 { errBody = "No style specified" }
+    style <- case inputsStyle inputs of
+                    Just s  ->
+                      case M.lookup (T.strip . T.toLower $ s) styleMap of
+                        Just sty -> return sty
+                        Nothing -> do -- parse XML
+                          parseResult <- parseStyle (\_ -> return mempty) s
+                          case parseResult of
+                             Left e -> throwError $
+                               err500 { errBody = BL.fromStrict $
+                                  TE.encodeUtf8 $ prettyCiteprocError e }
+                             Right sty -> return sty
+                    Nothing -> throwError $
+                       err500 { errBody = "No style specified" }
     let lang = inputsLang inputs
     let abbreviations = inputsAbbreviations inputs
     let references = fromMaybe [] $ inputsReferences inputs
     let citations = fromMaybe [] $ inputsCitations inputs
-    parseResult <- parseStyle (\_ -> return mempty) stylesheet
-    case parseResult of
-      Left e -> throwError $ err500 { errBody = BL.fromStrict $ TE.encodeUtf8 $
-                                                  prettyCiteprocError e }
-      Right parsedStyle -> do
-        let style = parsedStyle{ styleAbbreviations = abbreviations }
-        let locale = mergeLocales lang style
-        let result = citeproc defaultCiteprocOptions
-                       style
-                       lang
-                       references
-                       citations
-        return result
+    return $ citeproc defaultCiteprocOptions
+                      style{ styleAbbreviations = abbreviations }
+                      lang
+                      references
+                      citations
 
-app :: Application
-app = serve citeprocAPI server1
+app :: StyleMap -> Application
+app styleMap = serve citeprocAPI (server1 styleMap)
 
 main :: IO ()
 main = do
-  stylePaths <- listDirectory "style"
-  styleMap <- foldM addStyle mempty stylePaths
-  run 8081 app
+  args <- getArgs
+  stylePaths <- mconcat <$>
+    mapM (\dir -> map (dir </>) <$> listDirectory dir) args
+  styleMap <- foldM addStyle mempty $
+                filter ((== ".csl") . takeExtension) stylePaths
+  TIO.putStrLn $ "Loaded styles:"
+  mapM_ TIO.putStrLn $ M.keys styleMap
+  run 8081 (app styleMap)
 
-addStyle :: M.Map Text (Style (CslJson Text))
-         -> FilePath
-         -> IO (M.Map Text (Style (CslJson Text)))
+type StyleMap = M.Map Text (Style (CslJson Text))
+
+addStyle :: StyleMap -> FilePath -> IO StyleMap
 addStyle m fp = do
   let name = T.pack $ dropExtension $ takeBaseName fp
   txt <- TIO.readFile fp
