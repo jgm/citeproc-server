@@ -35,6 +35,8 @@ import Control.Applicative
 
 type CiteprocAPI =
   "citeproc" :> ReqBody '[JSON] (Inputs (CslJson Text))
+             :> QueryParam "style" Text
+             :> QueryParam "lang" Text
              :> Post '[JSON] (Result (CslJson Text))
 
 citeprocAPI :: Proxy CiteprocAPI
@@ -47,8 +49,11 @@ err t =
 server1 :: Server CiteprocAPI
 server1 = citeprocServer
  where
-  citeprocServer inputs = do
-    style <- case inputsStyle inputs of
+  citeprocServer inputs mbSty mbLang = do
+    style <- case mbSty of
+               Just s -> loadNamedStyle s
+               Nothing ->
+                 case inputsStyle inputs of
                     Just s | T.all (\c -> isAlphaNum c || c == '-') s
                            -> loadNamedStyle s
                     Just s -> do -- parse XML
@@ -57,7 +62,7 @@ server1 = citeprocServer
                          Left e -> err $ prettyCiteprocError e
                          Right sty -> return sty
                     Nothing -> err $ "No style specified"
-    let lang = inputsLang inputs
+    let lang = (parseLang <$> mbLang) <|> inputsLang inputs
     let abbreviations = inputsAbbreviations inputs
     let references = fromMaybe [] $ inputsReferences inputs
     let citations = fromMaybe [] $ inputsCitations inputs
