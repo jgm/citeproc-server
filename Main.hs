@@ -36,24 +36,18 @@ type CiteprocAPI =
 citeprocAPI :: Proxy CiteprocAPI
 citeprocAPI = Proxy
 
-server1 :: StyleMap -> Server CiteprocAPI
-server1 styleMap = citeprocServer
+server1 :: Server CiteprocAPI
+server1 = citeprocServer
  where
   citeprocServer inputs = do
     style <- case inputsStyle inputs of
-                    Just s | T.any (=='<') s  -> do -- parse XML
+                    Just s -> do -- parse XML
                       parseResult <- parseStyle (\_ -> return mempty) s
                       case parseResult of
                          Left e -> throwError $
                            err500 { errBody = BL.fromStrict $
                               TE.encodeUtf8 $ prettyCiteprocError e }
                          Right sty -> return sty
-                    Just s ->
-                      case M.lookup (T.strip . T.toLower $ s) styleMap of
-                        Just sty -> return sty
-                        Nothing -> throwError $
-                            err500 { errBody = BL.fromStrict $
-                            TE.encodeUtf8 $ "Unknown style " <> s }
                     Nothing -> throwError $
                        err500 { errBody = "No style specified" }
     let lang = inputsLang inputs
@@ -66,8 +60,8 @@ server1 styleMap = citeprocServer
                       references
                       citations
 
-app :: StyleMap -> Application
-app styleMap = serve citeprocAPI (server1 styleMap)
+app :: Application
+app = serve citeprocAPI server1
 
 main :: IO ()
 main = do
@@ -87,26 +81,6 @@ main = do
         TIO.putStrLn "No styles loaded.  Set the CSL_STYLES environment"
         TIO.putStrLn "variable to the directory containing CSL styles."
         return []
-  TIO.putStrLn "Loading style map...stand by..."
-  styleMap <- foldM addStyle mempty stylePaths
   TIO.putStrLn "Serving citeproc API at port 8081"
-  run 8081 (app styleMap)
+  run 8081 app
 
-type StyleMap = M.Map Text (Style (CslJson Text))
-
-addStyle :: StyleMap -> FilePath -> IO StyleMap
-addStyle m fp = do
-  let name = T.pack $ dropExtension $ takeBaseName fp
-  txt <- TIO.readFile fp
-  res <- parseStyle (\url ->
-              TIO.readFile ("styles"
-                </> T.unpack (T.takeWhileEnd (/='/') url)
-                <.> "csl"))
-              txt
-  style <- case res of
-             Right x -> return x
-             Left e  -> do
-               TIO.hPutStrLn stderr $ prettyCiteprocError e
-               exitWith $ ExitFailure 1
-  TIO.putStrLn name
-  return $ M.insert name style m
