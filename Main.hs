@@ -9,6 +9,7 @@ module Main where
 import Prelude ()
 import Prelude.Compat
 
+import Data.Aeson
 import Control.Monad
 import Control.Monad.Except
 import Citeproc
@@ -41,10 +42,29 @@ type CiteprocAPI =
   "citeproc" :> ReqBody '[JSON] (Inputs (CslJson Text))
              :> QueryParam "style" Text
              :> QueryParam "lang" Text
-             :> Post '[JSON] (Result Text)
+             :> Post '[JSON] CiteprocResult
   :<|> "styleNames" :> Get '[JSON] [FilePath]
   :<|> Raw
 
+data CiteprocResult =
+  CiteprocResult
+    { citeprocResultBibliography  :: [(Text, Text)]
+    , citeprocResultCitations     :: [Text]
+    , citeprocResultWarnings      :: [Text]
+    , citeprocResultHangingIndent :: Bool
+    , citeprocResultEntrySpacing  :: Int
+    , citeprocResultLineSpacing   :: Int
+    } deriving (Show, Eq)
+
+instance ToJSON CiteprocResult where
+ toJSON r = object
+   [ ("bibliography", toJSON $ citeprocResultBibliography r)
+   , ("citations", toJSON $ citeprocResultCitations r)
+   , ("warnings", toJSON $ citeprocResultWarnings r)
+   , ("hanging-ident", toJSON $ citeprocResultHangingIndent r)
+   , ("entry-spacing", toJSON $ citeprocResultEntrySpacing r)
+   , ("line-spacing", toJSON $ citeprocResultLineSpacing r)
+   ]
 
 citeprocAPI :: Proxy CiteprocAPI
 citeprocAPI = Proxy
@@ -88,12 +108,23 @@ server1 styleNames cache =
     let references = fromMaybe [] $ inputsReferences inputs
     let citations = fromMaybe [] $ inputsCitations inputs
     let locale = mergeLocales lang style
-    traverse (return . renderCslJson True locale)
-      $ citeproc defaultCiteprocOptions
-                 style{ styleAbbreviations = abbreviations }
-                 lang
-                 references
-                 citations
+    let sopts = styleOptions style
+    result <- traverse (return . renderCslJson True locale)
+                $ citeproc defaultCiteprocOptions
+                           style{ styleAbbreviations = abbreviations }
+                           lang
+                           references
+                           citations
+    return $ CiteprocResult
+             { citeprocResultBibliography = resultBibliography result
+             , citeprocResultCitations = resultCitations result
+             , citeprocResultWarnings = resultWarnings result
+             , citeprocResultHangingIndent = styleHangingIndent sopts
+             , citeprocResultEntrySpacing = fromMaybe 0 $
+                                              styleEntrySpacing sopts
+             , citeprocResultLineSpacing = fromMaybe 1 $
+                                              styleLineSpacing sopts
+             }
 
 type StyleCache = Cache Text (Style (CslJson Text))
 
