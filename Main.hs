@@ -41,6 +41,7 @@ type CiteprocAPI =
              :> QueryParam "style" Text
              :> QueryParam "lang" Text
              :> Post '[JSON] (Result Text)
+  :<|> "styleNames" :> Get '[JSON] [FilePath]
   :<|> Raw
 
 
@@ -51,8 +52,11 @@ err :: Text -> Handler a
 err t =
   throwError $ err500 { errBody = BL.fromStrict $ TE.encodeUtf8 t }
 
-server1 :: StyleCache -> Server CiteprocAPI
-server1 cache = citeprocServer :<|> serveDirectoryFileServer "static/"
+server1 :: [FilePath] -> StyleCache -> Server CiteprocAPI
+server1 styleNames cache =
+  citeprocServer
+  :<|> pure styleNames
+  :<|> serveDirectoryFileServer "static/"
  where
   citeprocServer inputs mbSty mbLang = do
     style <- case mbSty of
@@ -92,9 +96,9 @@ server1 cache = citeprocServer :<|> serveDirectoryFileServer "static/"
 
 type StyleCache = Cache Text (Style (CslJson Text))
 
-app :: StyleCache -> Application
-app cache =
-  serve citeprocAPI (server1 cache)
+app :: [FilePath] -> StyleCache -> Application
+app styleNames cache =
+  serve citeprocAPI (server1 styleNames cache)
 
 loadNamedStyle :: Text -> Handler (Style (CslJson Text))
 loadNamedStyle s = do
@@ -138,5 +142,5 @@ main = do
         TIO.putStrLn "variable to the directory containing CSL styles."
         return []
   TIO.putStrLn "Serving citeproc API at port 8081"
-  run 8081 (app cache)
+  run 8081 (app (map takeBaseName stylePaths) cache)
 
