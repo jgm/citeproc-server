@@ -138,6 +138,10 @@
     div.csl-indent {
       margin-left: 2em;
     }
+    div.warning {
+      border: 2px solid red;
+      padding: 1em;
+    }
   </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -146,6 +150,15 @@
     function renderedCitations(data) {
       var result = document.getElementById("result");
       result.innerHTML = "";
+      for (var i=0; i < data.warnings.length; i++) {
+        result.innerHTML +=
+          "<div class=\"warning\">" + data.warnings[i] + "</div>\n";
+      }
+      for (var i=0; i < data.citations.length; i++) {
+        result.innerHTML +=
+          "<p>" + data.citations[i] + "</p>\n";
+      }
+      result.innerHTML += "<hr>\n"
       for (var i=0; i < data.bibliography.length; i++) {
         result.innerHTML +=
           "<div id=\"ref-" + data.bibliography[i][0] +
@@ -210,6 +223,7 @@
 
   <label for="citations">Citations:<br></label>
   <textarea id="citations" rows="10" cols="60">
+    [  [{"id":"diaz2013"}]]
   </textarea>
   <br>
 
