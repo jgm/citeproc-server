@@ -40,7 +40,7 @@ type CiteprocAPI =
   "citeproc" :> ReqBody '[JSON] (Inputs (CslJson Text))
              :> QueryParam "style" Text
              :> QueryParam "lang" Text
-             :> Post '[JSON] (Result (CslJson Text))
+             :> Post '[JSON] (Result Text)
   :<|> Raw
 
 
@@ -82,11 +82,13 @@ server1 cache = citeprocServer :<|> serveDirectoryFileServer "static/"
     let abbreviations = inputsAbbreviations inputs
     let references = fromMaybe [] $ inputsReferences inputs
     let citations = fromMaybe [] $ inputsCitations inputs
-    return $ citeproc defaultCiteprocOptions
-                      style{ styleAbbreviations = abbreviations }
-                      lang
-                      references
-                      citations
+    let locale = mergeLocales lang style
+    traverse (return . renderCslJson True locale)
+      $ citeproc defaultCiteprocOptions
+                 style{ styleAbbreviations = abbreviations }
+                 lang
+                 references
+                 citations
 
 type StyleCache = Cache Text (Style (CslJson Text))
 

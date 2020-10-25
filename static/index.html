@@ -119,6 +119,25 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
   </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -136,18 +155,42 @@
     }
 
     function citeproc() {
+      var references = [];
+      var citations = [];
+      var referencesVal = document.getElementById("references").value.trim();
+      var citationsVal = document.getElementById("citations").value.trim();
+      if (referencesVal.length > 0) {
+        try {
+          references =
+            JSON.parse(referencesVal);
+        } catch(err) {
+          alert(err);
+        };
+      }
+      if (citationsVal.length > 0) {
+        try {
+          citations =
+            JSON.parse(citationsVal);
+        } catch(err) {
+          alert(err);
+        };
+      }
       fetch('/citeproc', {
         headers: { "Content-Type": "application/json" },
         method: 'POST',
         body: JSON.stringify({
           style: document.getElementById("style").value,
-          references: [
-            {id: "foo",type: "book", title: "foobar"},
-            {id: "bar",type: "article-journal", title: "Bar"},
-          ], // JSON.parse(document.getElementById("references").innerText) || [],
-          citations: [], // JSON.parse(document.getElementById("citations").innerText) || [],
+          lang: document.getElementById("lang").value,
+          references: references,
+          citations: citations,
         }) })
-        .then(response => response.json())
+        .then(function(response) {
+            if (!response.ok) {
+              throw Error(response.statusText);
+            }
+            return response.json()
+        })
+        .catch(error => console.log(error))
         .then(data => renderedCitations(data))
       }
   </script>
@@ -157,18 +200,83 @@
 <body>
 
   <label for="references">References:<br></label>
-  <textarea id="references">
+  <textarea id="references" rows="20" cols="60">
+    [ {"id":"diaz2013","type":"article-journal","title":"What Is Social Construction?","container-title":"European Journal of Philosophy","page":"1-16","URL":"http://onlinelibrary.wiley.com/doi/10.1111/ejop.12033/abstract","DOI":"10.1111/ejop.12033","ISSN":"1468-0378","language":"en","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2013,5,1]]},"accessed":{"date-parts":[[2015,11,14]]},"container-title-short":"Eur J Philos"}
+, {"id":"diaz2015","type":"article-journal","title":"In Defence of Historical Constructivism about Races","container-title":"Ergo, an Open Access Journal of Philosophy","volume":"2","URL":"http://hdl.handle.net/2027/spo.12405314.0002.021","DOI":"10.3998/ergo.12405314.0002.021","ISSN":"2330-4014","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2015]]}}
+, {"id":"diaz2016","type":"article-journal","title":"<i>Woman</i> as a Politically Significant Term: A Solution to the Puzzle","container-title":"Hypatia","page":"245-258","URL":"http://onlinelibrary.wiley.com.uaccess.univie.ac.at/doi/10.1111/hypa.12234/abstract","DOI":"10.1111/hypa.12234","ISSN":"1527-2001","title-short":"<i>Woman</i> as a Politically Significant Term","language":"en","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2016,2,1]]},"accessed":{"date-parts":[[2016,2,18]]},"container-title-short":"Hypatia"}
+]
   </textarea>
+  <br>
 
   <label for="citations">Citations:<br></label>
-  <textarea id="citations">
+  <textarea id="citations" rows="10" cols="60">
   </textarea>
+  <br>
+
+  <label for="lang">Lang:<br></label>
+  <select name="lang" id="lang">
+    <option value="af-ZA">af-ZA</option>
+    <option value="ar">ar</option>
+    <option value="bg-BG">bg-BG</option>
+    <option value="ca-AD">ca-AD</option>
+    <option value="cs-CZ">cs-CZ</option>
+    <option value="cy-GB">cy-GB</option>
+    <option value="da-DK">da-DK</option>
+    <option value="de-AT">de-AT</option>
+    <option value="de-CH">de-CH</option>
+    <option value="de-DE">de-DE</option>
+    <option value="el-GR">el-GR</option>
+    <option value="en-GB">en-GB</option>
+    <option value="en-US">en-US</option>
+    <option value="es-CL">es-CL</option>
+    <option value="es-ES">es-ES</option>
+    <option value="es-MX">es-MX</option>
+    <option value="et-EE">et-EE</option>
+    <option value="eu">eu</option>
+    <option value="fa-IR">fa-IR</option>
+    <option value="fi-FI">fi-FI</option>
+    <option value="fr-CA">fr-CA</option>
+    <option value="fr-FR">fr-FR</option>
+    <option value="he-IL">he-IL</option>
+    <option value="hr-HR">hr-HR</option>
+    <option value="hu-HU">hu-HU</option>
+    <option value="id-ID">id-ID</option>
+    <option value="is-IS">is-IS</option>
+    <option value="it-IT">it-IT</option>
+    <option value="ja-JP">ja-JP</option>
+    <option value="km-KH">km-KH</option>
+    <option value="ko-KR">ko-KR</option>
+    <option value="la">la</option>
+    <option value="lt-LT">lt-LT</option>
+    <option value="lv-LV">lv-LV</option>
+    <option value="mn-MN">mn-MN</option>
+    <option value="nb-NO">nb-NO</option>
+    <option value="nl-NL">nl-NL</option>
+    <option value="nn-NO">nn-NO</option>
+    <option value="pl-PL">pl-PL</option>
+    <option value="pt-BR">pt-BR</option>
+    <option value="pt-PT">pt-PT</option>
+    <option value="ro-RO">ro-RO</option>
+    <option value="ru-RU">ru-RU</option>
+    <option value="sk-SK">sk-SK</option>
+    <option value="sl-SI">sl-SI</option>
+    <option value="sr-RS">sr-RS</option>
+    <option value="sv-SE">sv-SE</option>
+    <option value="th-TH">th-TH</option>
+    <option value="tr-TR">tr-TR</option>
+    <option value="uk-UA">uk-UA</option>
+    <option value="vi-VN">vi-VN</option>
+    <option value="zh-CN">zh-CN</option>
+    <option value="zh-TW">zh-TW</option>
+  </select>
+  <br>
 
   <label for="style">Style:<br></label>
   <select name="style" id="style">
     <option value="chicago-author-date">Chicago Author-Date</option>
     <option value="ieee">IEEE</option>
   </select>
+  <br>
 
   <button type="button" onclick="citeproc()">Go</button>
 
