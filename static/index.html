@@ -9,13 +9,13 @@
     html {
       line-height: 1.7;
       font-family: Georgia, serif;
-      font-size: 20px;
+      font-size: 16px;
       color: #1a1a1a;
       background-color: #fdfdfd;
     }
     body {
       margin: 0 auto;
-      max-width: 40em;
+      // max-width: 50em;
       padding-left: 50px;
       padding-right: 50px;
       padding-top: 50px;
@@ -142,6 +142,20 @@
       border: 2px solid red;
       padding: 1em;
     }
+
+    div.form {
+      display: grid;
+      grid-template-columns: auto auto;
+    }
+    div.item {
+      padding-right: 40px;
+      min-width: 20em;
+    }
+    textarea {
+      width: 100%;
+      height: 30em;
+    }
+
   </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -158,7 +172,7 @@
         result.innerHTML +=
           "<p>" + data.citations[i] + "</p>\n";
       }
-      result.innerHTML += "<hr>\n"
+      result.innerHTML += "<hr>\n";
       for (var i=0; i < data.bibliography.length; i++) {
         result.innerHTML +=
           "<div id=\"ref-" + data.bibliography[i][0] +
@@ -212,22 +226,9 @@
 </head>
 <body>
 
-  <label for="references">References:<br></label>
-  <textarea id="references" rows="20" cols="60">
-    [ {"id":"diaz2013","type":"article-journal","title":"What Is Social Construction?","container-title":"European Journal of Philosophy","page":"1-16","URL":"http://onlinelibrary.wiley.com/doi/10.1111/ejop.12033/abstract","DOI":"10.1111/ejop.12033","ISSN":"1468-0378","language":"en","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2013,5,1]]},"accessed":{"date-parts":[[2015,11,14]]},"container-title-short":"Eur J Philos"}
-, {"id":"diaz2015","type":"article-journal","title":"In Defence of Historical Constructivism about Races","container-title":"Ergo, an Open Access Journal of Philosophy","volume":"2","URL":"http://hdl.handle.net/2027/spo.12405314.0002.021","DOI":"10.3998/ergo.12405314.0002.021","ISSN":"2330-4014","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2015]]}}
-, {"id":"diaz2016","type":"article-journal","title":"<i>Woman</i> as a Politically Significant Term: A Solution to the Puzzle","container-title":"Hypatia","page":"245-258","URL":"http://onlinelibrary.wiley.com.uaccess.univie.ac.at/doi/10.1111/hypa.12234/abstract","DOI":"10.1111/hypa.12234","ISSN":"1527-2001","title-short":"<i>Woman</i> as a Politically Significant Term","language":"en","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2016,2,1]]},"accessed":{"date-parts":[[2016,2,18]]},"container-title-short":"Hypatia"}
-]
-  </textarea>
-  <br>
+<div>
 
-  <label for="citations">Citations:<br></label>
-  <textarea id="citations" rows="10" cols="60">
-    [  [{"id":"diaz2013"}]]
-  </textarea>
-  <br>
-
-  <label for="lang">Lang:<br></label>
+<label for="lang">Lang: </label>
   <select name="lang" id="lang">
     <option value="af-ZA">af-ZA</option>
     <option value="ar">ar</option>
@@ -283,16 +284,37 @@
     <option value="zh-CN">zh-CN</option>
     <option value="zh-TW">zh-TW</option>
   </select>
-  <br>
 
-  <label for="style">Style:<br></label>
+  <label for="style">Style:</label>
   <select name="style" id="style">
     <option value="chicago-author-date">Chicago Author-Date</option>
     <option value="ieee">IEEE</option>
   </select>
-  <br>
 
-  <button type="button" onclick="citeproc()">Go</button>
+  <button type="button" onclick="citeproc()">Render</button>
+
+</div>
+
+<div class="form">
+
+
+  <div class="item">
+  <label for="references">References:<br></label>
+  <textarea id="references" >
+    [ {"id":"diaz2013","type":"article-journal","title":"What Is Social Construction?","container-title":"European Journal of Philosophy","page":"1-16","URL":"http://onlinelibrary.wiley.com/doi/10.1111/ejop.12033/abstract","DOI":"10.1111/ejop.12033","ISSN":"1468-0378","language":"en","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2013,5,1]]},"accessed":{"date-parts":[[2015,11,14]]},"container-title-short":"Eur J Philos"}
+, {"id":"diaz2015","type":"article-journal","title":"In Defence of Historical Constructivism about Races","container-title":"Ergo, an Open Access Journal of Philosophy","volume":"2","URL":"http://hdl.handle.net/2027/spo.12405314.0002.021","DOI":"10.3998/ergo.12405314.0002.021","ISSN":"2330-4014","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2015]]}}
+, {"id":"diaz2016","type":"article-journal","title":"<i>Woman</i> as a Politically Significant Term: A Solution to the Puzzle","container-title":"Hypatia","page":"245-258","URL":"http://onlinelibrary.wiley.com.uaccess.univie.ac.at/doi/10.1111/hypa.12234/abstract","DOI":"10.1111/hypa.12234","ISSN":"1527-2001","title-short":"<i>Woman</i> as a Politically Significant Term","language":"en","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2016,2,1]]},"accessed":{"date-parts":[[2016,2,18]]},"container-title-short":"Hypatia"}
+]
+  </textarea>
+  </div>
+
+  <div class="item">
+  <label for="citations">Citations:<br></label>
+  <textarea id="citations" >
+    [  [{"id":"diaz2013"}]]
+  </textarea>
+  </div>
+  </div>
 
   <div id="result">
   </div>
