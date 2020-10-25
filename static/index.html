@@ -7,7 +7,7 @@
   <title>-</title>
   <style>
     html {
-      line-height: 1.7;
+      line-height: 1.3;
       font-family: Georgia, serif;
       font-size: 16px;
       color: #1a1a1a;
@@ -15,7 +15,7 @@
     }
     body {
       margin: 0 auto;
-      // max-width: 50em;
+      max-width: 70em;
       padding-left: 50px;
       padding-right: 50px;
       padding-top: 50px;
@@ -45,7 +45,6 @@
       }
     }
     p {
-      margin-top: 1.7em;
     }
     a {
       color: #1a1a1a;
@@ -80,7 +79,6 @@
       padding: .2em .4em;
     }
     pre {
-      line-height: 1.5em;
       padding: 1em;
       background-color: #f0f0f0;
       overflow: auto;
@@ -116,7 +114,6 @@
     span.smallcaps{font-variant: small-caps;}
     span.underline{text-decoration: underline;}
     div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
     div.csl-bib-body { }
@@ -126,6 +123,15 @@
     .hanging div.csl-entry {
       margin-left:2em;
       text-indent:-2em;
+    }
+    .line-spacing-2 div.csl-entry {
+      line-height: 2;
+    }
+    .entry-spacing-1 div.csl-entry {
+      margin-bottom: 1em;
+    }
+    .entry-spacing-2 div.csl-entry {
+      margin-bottom: 2em;
     }
     div.csl-left-margin {
       min-width:2em;
@@ -172,13 +178,30 @@
         result.innerHTML +=
           "<p>" + data.citations[i] + "</p>\n";
       }
-      result.innerHTML += "<hr>\n";
+      var classes = ["csl-bibliography"];
+      switch (data['entry-spacing']) {
+          case 1: classes.push("entry-spacing-1"); break;
+          case 2: classes.push("entry-spacing-2"); break;
+          default:
+      }
+      switch (data['line-spacing']) {
+          case 2:  classes.push("line-spacing-2"); break;
+          default:
+      }
+      if (data['hanging-ident']) {
+        classes.push("hanging");
+      }
+      var bib = "";
+      bib += "<hr>\n";
+      bib += "<div class=\"" + classes.join(" ") + "\">\n"
       for (var i=0; i < data.bibliography.length; i++) {
-        result.innerHTML +=
+        bib +=
           "<div id=\"ref-" + data.bibliography[i][0] +
-          "\" class=\"bibentry\">\n" + data.bibliography[i][1] +
+          "\" class=\"csl-entry\">\n" + data.bibliography[i][1] +
           "\n</div>\n";
       }
+      bib += "</div>\n";
+      result.innerHTML += bib;
     }
 
     function getStyleNames() {
