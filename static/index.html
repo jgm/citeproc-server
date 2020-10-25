@@ -181,6 +181,29 @@
       }
     }
 
+    function getStyleNames() {
+      fetch('/styleNames', {
+        headers: { "Content-Type": "application/json" },
+        method: 'GET'
+      })
+       .then(function(response) {
+            if (!response.ok) {
+              throw Error(response.statusText);
+            }
+            return response.json()
+        })
+        .catch(error => console.log(error))
+        .then(function(data) {
+            var style = document.getElementById("style");
+            var opts = [];
+            for (var i=0; i < data.length; i++) {
+              opts.push("<option value=\"" + data[i] + "\">" + data[i] +
+                        "</option>");
+            }
+          style.innerHTML = opts.join();
+        })
+    }
+
     function citeproc() {
       var references = [];
       var citations = [];
@@ -224,7 +247,7 @@
 
 
 </head>
-<body>
+<body onload="getStyleNames()">
 
 <div>
 
@@ -287,8 +310,6 @@
 
   <label for="style">Style:</label>
   <select name="style" id="style">
-    <option value="chicago-author-date">Chicago Author-Date</option>
-    <option value="ieee">IEEE</option>
   </select>
 
   <button type="button" onclick="citeproc()">Render</button>

@@ -32,6 +32,7 @@ import System.Exit
 import System.Directory (listDirectory, doesDirectoryExist)
 import System.IO (stderr)
 import Data.Char (isAlphaNum)
+import Data.List (sort)
 import Control.Monad.Trans (liftIO)
 import Control.Applicative
 import Data.Cache
@@ -142,5 +143,5 @@ main = do
         TIO.putStrLn "variable to the directory containing CSL styles."
         return []
   TIO.putStrLn "Serving citeproc API at port 8081"
-  run 8081 (app (map takeBaseName stylePaths) cache)
+  run 8081 (app (sort $ map takeBaseName stylePaths) cache)
 
