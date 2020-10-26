@@ -159,7 +159,7 @@
     }
     textarea {
       width: 100%;
-      height: 30em;
+      height: 15em;
     }
 
   </style>
@@ -204,6 +204,25 @@
       result.innerHTML += bib;
     }
 
+    function fillStyle() {
+      var styleName = document.getElementById("style-name").value;
+      fetch('/style?name=' + styleName, {
+        headers: { "Content-Type": "text/plain" },
+        method: 'GET'
+      })
+       .then(function(response) {
+            if (!response.ok) {
+              throw Error(response.statusText);
+            }
+            return response.text()
+        })
+        .catch(error => console.log(error))
+        .then(function(data) {
+            var style = document.getElementById("style");
+            style.innerText = data;
+        })
+    }
+
     function getStyleNames() {
       fetch('/styleNames', {
         headers: { "Content-Type": "application/json" },
@@ -217,21 +236,25 @@
         })
         .catch(error => console.log(error))
         .then(function(data) {
-            var style = document.getElementById("style");
+            var styleName = document.getElementById("style-name");
             var opts = [];
             for (var i=0; i < data.length; i++) {
-              opts.push("<option value=\"" + data[i] + "\">" + data[i] +
-                        "</option>");
+              opts.push("<option value=\"" + data[i] + "\"" +
+                ">" + data[i].slice(0,60) + "</option>");
             }
-          style.innerHTML = opts.join();
+          styleName.innerHTML = opts.join();
+          fillStyle()
         })
     }
 
     function citeproc() {
       var references = [];
       var citations = [];
+      var abbreviations = {};
       var referencesVal = document.getElementById("references").value.trim();
       var citationsVal = document.getElementById("citations").value.trim();
+      var abbreviationsVal = document.getElementById("abbreviations").value.trim();
+
       if (referencesVal.length > 0) {
         try {
           references =
@@ -248,12 +271,21 @@
           alert(err);
         };
       }
+      if (abbreviationsVal.length > 0) {
+        try {
+          abbreviations =
+            JSON.parse(abbreviationsVal);
+        } catch(err) {
+          alert(err);
+        };
+      }
       fetch('/citeproc', {
         headers: { "Content-Type": "application/json" },
         method: 'POST',
         body: JSON.stringify({
-          style: document.getElementById("style").value,
-          lang: document.getElementById("lang").value,
+          style: document.getElementById("style").value.trim(),
+          abbreviations: abbreviations,
+          lang: document.getElementById("lang").value.trim(),
           references: references,
           citations: citations,
         }) })
@@ -331,9 +363,6 @@
     <option value="zh-TW">zh-TW</option>
   </select>
 
-  <label for="style">Style:</label>
-  <select name="style" id="style">
-  </select>
 
   <button type="button" onclick="citeproc()">Render</button>
 
@@ -341,11 +370,34 @@
 
 <div class="form">
 
+  <div class="item">
+  </select>
+  <label for="style">Style:</label>
+  <select name="style-name" id="style-name" onchange="fillStyle()">
+  </select>
+  <br>
+  <textarea id="style" >
+  </textarea>
+  </div>
+
+  <div class="item">
+  <label for="abbreviations">Abbreviations:<br></label>
+  <textarea id="abbreviations">
+{ "default": {
+    "container-title": {
+        "Lloyd's Law Reports": "Lloyd's Rep",
+        "Estates Gazette": "EG",
+        "Scots Law Times": "SLT"
+    }
+  }
+}
+  </textarea>
+  </div>
 
   <div class="item">
   <label for="references">References:<br></label>
   <textarea id="references" >
-    [ {"id":"diaz2013","type":"article-journal","title":"What Is Social Construction?","container-title":"European Journal of Philosophy","page":"1-16","URL":"http://onlinelibrary.wiley.com/doi/10.1111/ejop.12033/abstract","DOI":"10.1111/ejop.12033","ISSN":"1468-0378","language":"en","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2013,5,1]]},"accessed":{"date-parts":[[2015,11,14]]},"container-title-short":"Eur J Philos"}
+[ {"id":"diaz2013","type":"article-journal","title":"What Is Social Construction?","container-title":"European Journal of Philosophy","page":"1-16","URL":"http://onlinelibrary.wiley.com/doi/10.1111/ejop.12033/abstract","DOI":"10.1111/ejop.12033","ISSN":"1468-0378","language":"en","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2013,5,1]]},"accessed":{"date-parts":[[2015,11,14]]},"container-title-short":"Eur J Philos"}
 , {"id":"diaz2015","type":"article-journal","title":"In Defence of Historical Constructivism about Races","container-title":"Ergo, an Open Access Journal of Philosophy","volume":"2","URL":"http://hdl.handle.net/2027/spo.12405314.0002.021","DOI":"10.3998/ergo.12405314.0002.021","ISSN":"2330-4014","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2015]]}}
 , {"id":"diaz2016","type":"article-journal","title":"<i>Woman</i> as a Politically Significant Term: A Solution to the Puzzle","container-title":"Hypatia","page":"245-258","URL":"http://onlinelibrary.wiley.com.uaccess.univie.ac.at/doi/10.1111/hypa.12234/abstract","DOI":"10.1111/hypa.12234","ISSN":"1527-2001","title-short":"<i>Woman</i> as a Politically Significant Term","language":"en","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2016,2,1]]},"accessed":{"date-parts":[[2016,2,18]]},"container-title-short":"Hypatia"}
 ]
@@ -355,7 +407,9 @@
   <div class="item">
   <label for="citations">Citations:<br></label>
   <textarea id="citations" >
-    [  [{"id":"diaz2013"}]]
+[
+  [{"id":"diaz2013"}]
+]
   </textarea>
   </div>
   </div>

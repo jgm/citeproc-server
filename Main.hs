@@ -38,12 +38,15 @@ import Control.Monad.Trans (liftIO)
 import Control.Applicative
 import Data.Cache
 
+import Debug.Trace
+
 type CiteprocAPI =
   "citeproc" :> ReqBody '[JSON] (Inputs (CslJson Text))
              :> QueryParam "style" Text
              :> QueryParam "lang" Text
              :> Post '[JSON] CiteprocResult
   :<|> "styleNames" :> Get '[JSON] [FilePath]
+  :<|> "style" :> QueryParam "name" Text :> Get '[PlainText] Text
   :<|> Raw
 
 data CiteprocResult =
@@ -77,11 +80,15 @@ server1 :: [FilePath] -> StyleCache -> Server CiteprocAPI
 server1 styleNames cache =
   citeprocServer
   :<|> pure styleNames
+  :<|> getStyle
   :<|> serveDirectoryFileServer "static/"
  where
+  getStyle Nothing = err $ "No name parameter given"
+  getStyle (Just name) = getNamedStyle name
+
   citeprocServer inputs mbSty mbLang = do
-    style <- case mbSty of
-               Just s -> do
+    style <- case mbSty <|> inputsStyle inputs of
+               Just s | T.all (\c -> isAlphaNum c || c == '-') s -> do
                  cachedSty <- liftIO $ Data.Cache.lookup cache s
                  case cachedSty of
                    Just sty -> return sty
@@ -93,16 +100,13 @@ server1 styleNames cache =
                        when (csize > 100) $
                          Data.Cache.purge cache
                      return sty
-               Nothing ->
-                 case inputsStyle inputs of
-                    Just s | T.all (\c -> isAlphaNum c || c == '-') s
-                           -> loadNamedStyle s
-                    Just s -> do -- parse XML
-                      parseResult <- parseStyle (\_ -> return mempty) s
-                      case parseResult of
-                         Left e -> err $ prettyCiteprocError e
-                         Right sty -> return sty
-                    Nothing -> err $ "No style specified"
+               Just s -> do -- parse XML
+                 parseResult <- parseStyle
+                    (getNamedStyle . T.takeWhileEnd (/='/')) s
+                 case parseResult of
+                    Left e -> err $ prettyCiteprocError e
+                    Right sty -> return sty
+               Nothing -> err $ "No style specified"
     let lang = (parseLang <$> mbLang) <|> inputsLang inputs
     let abbreviations = inputsAbbreviations inputs
     let references = fromMaybe [] $ inputsReferences inputs
@@ -132,27 +136,28 @@ app :: [FilePath] -> StyleCache -> Application
 app styleNames cache =
   serve citeprocAPI (server1 styleNames cache)
 
-loadNamedStyle :: Text -> Handler (Style (CslJson Text))
-loadNamedStyle s = do
+getNamedStyle :: Text -> Handler Text
+getNamedStyle s = do
   mbStyleDir <- liftIO $ lookupEnv "CSL_STYLES"
   case mbStyleDir of
     Nothing -> err $ "CSL_STYLES not set"
-    Just d  -> do
-      mbtxt <- liftIO $ Just <$>
-               ( TIO.readFile (d </> T.unpack s <.> "csl")
-                 <|>
-                 TIO.readFile (d </> "dependent" </> T.unpack s <.> "csl") )
-              <|> pure Nothing
-      parseResult <- maybe
-        (err $ "style " <> s <> " not found")
-        (\txt -> liftIO $ parseStyle
-                   (\url -> TIO.readFile (d </>
-                             T.unpack (T.takeWhileEnd (/='/') url) <.> "csl"))
-                   txt)
-        mbtxt
-      case parseResult of
-        Left e -> err $ prettyCiteprocError e
-        Right sty -> return sty
+    Just d  -> catchError
+                (liftIO
+                 (TIO.readFile (d </> T.unpack s <.> "csl")
+                  <|>
+                  TIO.readFile (d </> "dependent" </> T.unpack s <.> "csl")))
+                (\e ->
+                  err $ "could not get style " <> s <> "\n" <> T.pack (show e))
+
+loadNamedStyle :: Text -> Handler (Style (CslJson Text))
+loadNamedStyle s = do
+  txt <- getNamedStyle s
+  parseResult <- parseStyle
+                   (getNamedStyle . T.takeWhileEnd (/='/'))
+                   txt
+  case parseResult of
+    Left e -> err $ prettyCiteprocError e
+    Right sty -> return sty
 
 main :: IO ()
 main = do
@@ -166,9 +171,10 @@ main = do
            else return []
   stylePaths <-
     case mbStylePath of
-      Just stylePath ->
-        (++) <$> getCslFiles stylePath
-             <*> getCslFiles (stylePath </> "dependent")
+      Just stylePath -> getCslFiles stylePath
+        -- or, to get dependent styles too:
+        -- (++) <$> getCslFiles stylePath
+        --      <*> getCslFiles (stylePath </> "dependent")
       Nothing -> do
         TIO.putStrLn "No styles loaded.  Set the CSL_STYLES environment"
         TIO.putStrLn "variable to the directory containing CSL styles."
