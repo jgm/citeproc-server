@@ -77,13 +77,15 @@ err :: Text -> Handler a
 err t =
   throwError $ err500 { errBody = BL.fromStrict $ TE.encodeUtf8 t }
 
-server1 :: StyleCache -> Server CiteprocAPI
-server1 cache =
+server1 :: FilePath -> StyleCache -> Server CiteprocAPI
+server1 staticDir cache =
   citeprocServer
   :<|> pure (M.keys styles)
   :<|> getStyle
-  :<|> serveDirectoryFileServer "static/"
+  :<|> serveDirectoryFileServer staticDir
+
  where
+
   getStyle Nothing = err $ "No name parameter given"
   getStyle (Just name) = getNamedStyle name
 
@@ -138,9 +140,9 @@ styles =
   M.fromList $ map (\(fp,bs) -> (T.pack fp, TE.decodeUtf8 bs))
                    $(embedDir "styles")
 
-app :: StyleCache -> Application
-app cache =
-  serve citeprocAPI (server1 cache)
+app :: FilePath -> StyleCache -> Application
+app staticDir cache =
+  serve citeprocAPI (server1 staticDir cache)
 
 getNamedStyle :: Text -> Handler Text
 getNamedStyle s = do
@@ -161,6 +163,7 @@ loadNamedStyle s = do
 main :: IO ()
 main = do
   (cache :: StyleCache) <- newCache Nothing
+  staticDir <- getEnv "CITEPROC_STATIC" <|> pure "static"
   putStrLn "Serving citeproc API at port 8081"
-  run 8081 (app cache)
+  run 8081 (app staticDir cache)
 
