@@ -221,6 +221,7 @@
         .then(function(data) {
             var style = document.getElementById("style");
             style.innerHTML = data.replaceAll("&","&amp;");;
+            citeproc();
         })
     }
 
@@ -244,7 +245,7 @@
                 ">" + data[i].slice(0,60) + "</option>");
             }
           styleName.innerHTML = opts.join();
-          loadStyle()
+          loadStyle();
         })
     }
 
@@ -315,7 +316,7 @@
 <div>
 
 <label for="lang">Locale: </label>
-  <select name="lang" id="lang">
+  <select name="lang" id="lang" onchange="citeproc()">
     <option value="(style default)">(style default)</option>
     <option value="af-ZA">af-ZA</option>
     <option value="ar">ar</option>
