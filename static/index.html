@@ -162,11 +162,23 @@
       height: 15em;
       white-space: pre-wrap;
     }
-    #style { 
+    .editor {
         border: 1px solid lightgray;
         margin: auto;
         height: 300px;
         width: 95%:
+    }
+    label {
+        font-family: sans-serif;
+        font-size: 83%;
+        font-weight: bold;
+        background-color: #eee;
+    }
+    button {
+        font-family: sans-serif;
+        font-size: 83%;
+        font-weight: bold;
+        border-radius: 12px;
     }
 
   </style>
@@ -180,7 +192,7 @@
 
 <div>
 
-<label for="lang">Locale: </label>
+<label for="lang">Locale</label>
   <select name="lang" id="lang" onchange="citeproc()">
     <option value="(style default)">(style default)</option>
     <option value="af-ZA">af-ZA</option>
@@ -247,17 +259,17 @@
 
   <div class="item">
   </select>
-  <label for="style">Style:</label>
+  <label for="style">Style</label>
   <select name="style-name" id="style-name" onchange="loadStyle()">
   </select>
   <br>
-  <div id="style" >
+  <div id="style" class="editor">
   </div>
   </div>
 
   <div class="item">
-  <label for="abbreviations">Abbreviations:<br></label>
-  <textarea id="abbreviations">
+  <label for="abbreviations">Abbreviations<br></label>
+  <div id="abbreviations" class="editor">
 { "default": {
     "container-title": {
         "Lloyd's Law Reports": "Lloyd's Rep",
@@ -266,13 +278,12 @@
     }
   }
 }
-  </textarea>
+  </div>
   </div>
 
   <div class="item">
-  <label for="references">References:<br></label>
-  <textarea id="references" >
-[
+  <label for="references">References<br></label>
+  <div id="references" class="editor">[
   {
     "id": "diaz2013",
     "type": "article-journal",
@@ -504,14 +515,12 @@
     "title": "Reflections on consequence",
     "type": "chapter"
   }
-]
-  </textarea>
+]</div>
   </div>
 
   <div class="item">
-  <label for="citations">Citations:<br></label>
-  <textarea id="citations" >
-[
+  <label for="citations">Citations<br></label>
+  <div id="citations" class="editor">[
   [ {"id":"diaz2013"},
     {"prefix":"see also ",
      "id":"diaz2016",
@@ -521,23 +530,30 @@
   ],
   [ {"id":"etchemendy:concept"}
   ]
-]
-  </textarea>
+]</div>
   </div>
   </div>
 
   <div id="result">
   </div>
-  
 
-    <script>
-    var style = ace.edit("style",
-                  { mode: "ace/mode/xml",
-                  });
-    style.setOptions({showLineNumbers: false,
+  <script>
+    var style = ace.edit("style", { mode: "ace/mode/xml" });
+    var editorOpts = {showLineNumbers: false,
                       showFoldWidgets: true,
                       showGutter: false,
-                      theme: "ace/theme/textmate" });
+                      theme: "ace/theme/textmate" };
+    style.setOptions(editorOpts);
+
+    var references = ace.edit("references", { mode: "ace/mode/json" });
+    references.setOptions(editorOpts);
+
+    var abbreviations = ace.edit("abbreviations", { mode: "ace/mode/json" });
+    abbreviations.setOptions(editorOpts);
+
+    var citations = ace.edit("citations", { mode: "ace/mode/json" });
+    citations.setOptions(editorOpts);
+
     function renderedCitations(data) {
       var result = document.getElementById("result");
       result.innerHTML = "";
@@ -590,6 +606,7 @@
         .catch(error => console.log(error))
         .then(function(data) {
             style.setValue(data);
+            style.clearSelection();
             citeproc();
         })
     }
@@ -619,40 +636,43 @@
     }
 
     function citeproc() {
-      var references = [];
-      var citations = [];
-      var abbreviations = {};
-      var lang;
-      var referencesVal = document.getElementById("references").value.trim();
-      var citationsVal = document.getElementById("citations").value.trim();
-      var abbreviationsVal = document.getElementById("abbreviations").value.trim();
+      var cites = [];
+      var citesVal = citations.getValue().trim();
+      if (citesVal.length > 0) {
+        try {
+          cites =
+            JSON.parse(citesVal);
+        } catch(err) {
+          alert(err);
+        };
+      }
 
+
+      var lang;
       var langVal = document.getElementById("lang").value.trim();
 
-      if (referencesVal.length > 0) {
+      var abbrevs = {};
+      var abbrevsVal = abbreviations.getValue().trim();
+      if (abbrevsVal.length > 0) {
         try {
-          references =
-            JSON.parse(referencesVal);
+          abbrevs =
+            JSON.parse(abbrevsVal);
         } catch(err) {
           alert(err);
         };
       }
-      if (citationsVal.length > 0) {
+
+      var refs = [];
+      var refsVal = references.getValue().trim();
+      if (refsVal.length > 0) {
         try {
-          citations =
-            JSON.parse(citationsVal);
+          refs =
+            JSON.parse(refsVal);
         } catch(err) {
           alert(err);
         };
       }
-      if (abbreviationsVal.length > 0) {
-        try {
-          abbreviations =
-            JSON.parse(abbreviationsVal);
-        } catch(err) {
-          alert(err);
-        };
-      }
+
       if (langVal != "(style default)") {
         lang = langVal;
       }
@@ -662,10 +682,10 @@
         method: 'POST',
         body: JSON.stringify({
           style: style.getValue(), // document.getElementById("style").value.trim(),
-          abbreviations: abbreviations,
+          abbreviations: abbrevs,
           lang: lang,
-          references: references,
-          citations: citations,
+          references: refs,
+          citations: cites,
         }) })
         .then(function(response) {
             if (!response.ok) {
