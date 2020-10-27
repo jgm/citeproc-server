@@ -239,10 +239,6 @@ var sampleReferences =
 [
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Litigation in Japan: a new look at old problems',
     'container-title': 'Willamette Journal of International Law and Dispute Resolution',
     page: '121-142',
@@ -256,9 +252,6 @@ var sampleReferences =
       {
         family: 'Haley',
         given: 'John O.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -281,10 +274,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Baseball Players\' Labor Market',
     'container-title': 'Journal of Political Economy',
     page: '242-258',
@@ -298,9 +287,6 @@ var sampleReferences =
       {
         family: 'Rottenberg',
         given: 'Simon',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -325,10 +311,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Handbook on the International Transfer of Sentenced Persons',
     page: '78',
     source: 'Zotero',
@@ -337,10 +319,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'In search of an effective monitoring board model: board reforms and the political economy of corporate law in china',
     'container-title': 'connecticut joural of international law',
     page: '1-47',
@@ -352,9 +330,6 @@ var sampleReferences =
       {
         family: 'Xi',
         given: 'Chao',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -368,10 +343,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'BEYOND RESCUECOM v. GOOGLE. THE FUTURE OF KEYWORD ADVERTISING',
     page: '29',
     volume: '25',
@@ -381,19 +352,12 @@ var sampleReferences =
       {
         family: 'KemnitZer',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'vynvejthcu'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'New and Renewable Sources of Energy for Developing Countries',
     'container-title': 'Ambio',
     page: '307-308',
@@ -406,9 +370,6 @@ var sampleReferences =
       {
         family: 'Kristoferson',
         given: 'Lars',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -431,10 +392,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Consumer protection in the EU',
     page: '24',
     source: 'Zotero',
@@ -443,19 +400,12 @@ var sampleReferences =
       {
         family: 'Jana',
         given: 'VALANT',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'o7glfae69o'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Asymmetric regulation of access and price discrimination in telecommunications',
     page: '24',
     source: 'Zotero',
@@ -464,19 +414,12 @@ var sampleReferences =
       {
         family: 'Peitz',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'tbft3kh4oq'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Civil Society and the Fight against Corruption',
     issue: 'Corruption',
     'abstract': 'This paper provides a state of play analysis of corruption and anti-corruption policies within the public\nsector and law enforcement institutions in the Republic of Moldova. It reflects on the role and potentials\nof civil society actors in the fight against corruption and highlights concrete recommendations for a civil\nsociety driven anti-corruption reform agenda. The paper draws on the results of a series of workshops with\nMoldovan civil society representatives and anti-corruption experts that aimed at identifying successful\nanti-corruption measures for combatting systemic corruption in the Republic of Moldova.',
@@ -484,34 +427,21 @@ var sampleReferences =
       {
         family: 'Ruslan Codreanu',
         given: 'Mathias Jopp',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Victor Lutenco',
         given: 'Eremei Priseajniuc',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Martin Sieg',
         given: '',
         literal: 'Martin Sieg',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '08fetdkv3p'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Implications of Licensing Agreements and the First Sale Doctrine on U.S. And EU Secondary Markets for Digital Goods',
     'container-title': 'DUKE JOURNAL OF COMPARATIVE & INTERNATIONAL LAW',
     page: '28',
@@ -522,19 +452,12 @@ var sampleReferences =
       {
         family: 'Cobb',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'gtxhukwmeu'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Art of Writing Judgments',
     page: '6',
     source: 'Zotero',
@@ -543,10 +466,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Ottoman Tax Registers ( <i>Tahrir Defterleri</i> )',
     'container-title': 'Historical Methods: A Journal of Quantitative and Interdisciplinary History',
     page: '87-102',
@@ -562,9 +481,6 @@ var sampleReferences =
       {
         family: 'CoşGel',
         given: 'Metin M',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -588,10 +504,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Bananas, Laos and economic development: farming practice and farmers\' perceptions',
     page: '188',
     source: 'Zotero',
@@ -600,28 +512,17 @@ var sampleReferences =
       {
         family: 'Vansilalom',
         given: 'Viengphet',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '92q45qc5ty'
   },
   {
     type: 'article',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'European Convention on the Transfer of Sentenced Persons.pdf',
     id: 'jj2o34zqpu'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: '‘Better-Practice’ Concessions? Lessons from Cambodia’s Leopard-Skin Landscape',
     'container-title': 'Brill',
     'collection-title': 'Large-Scale Land Acquisitions',
@@ -631,9 +532,6 @@ var sampleReferences =
         family: 'Michael B. Dwyer, Emily Polack and  Sokbunthoeun So',
         given: 'Christophe Gironde',
         suffix: 'Christophe Golay, Peter Messerli',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -647,10 +545,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Roots of the modern interstate border dispute',
     'container-title': 'The Journal of Conflict Resolution',
     page: '427-454',
@@ -664,9 +558,6 @@ var sampleReferences =
       {
         family: 'Mandel',
         given: 'Robert',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -689,10 +580,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'E‐government and developing countries: an overview',
     'container-title': 'International Review of Law, Computers & Technology',
     page: '109-132',
@@ -708,9 +595,6 @@ var sampleReferences =
       {
         family: 'Basu',
         given: 'Subhajit',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -734,10 +618,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness in International Law: A Historic Overview',
     page: '7',
     source: 'Zotero',
@@ -746,19 +626,12 @@ var sampleReferences =
       {
         family: 'Stiller',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'vxkp8hkjo1'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'French Domestic Arbitration Law Special Feature',
     'container-title': 'International Lawyer (ABA)',
     page: '749-792',
@@ -771,9 +644,6 @@ var sampleReferences =
       {
         family: 'Seppala',
         given: 'Christopher R.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -796,10 +666,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Recruitment and Training of Bureaucrats in the United States',
     'container-title': 'The Annals of the American Academy of Political and Social Science',
     page: '39-44',
@@ -811,9 +677,6 @@ var sampleReferences =
       {
         family: 'Sayre',
         given: 'Wallace S.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -836,10 +699,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness: Violation or Conduit for Violation of Human Rights?',
     'container-title': 'Human Rights Quarterly',
     page: '106',
@@ -855,9 +714,6 @@ var sampleReferences =
       {
         family: 'Walker',
         given: 'Dorothy Jean',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -881,10 +737,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'TAX PLANNING FOR CAPITAL ASSET DISPOSAL IS COMPLEX YET NECESSARY.',
     page: '5',
     source: 'Zotero',
@@ -893,40 +745,24 @@ var sampleReferences =
       {
         family: 'Joy',
         given: 'David',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Vecchio',
         given: 'Stephen C Del',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Clinton',
         given: 'B D Ouglas',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Young',
         given: 'James C',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'qpnu5xewnf'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Concession Agreements: From Private Contract to Public Policy',
     'container-title': 'The Yale Law Journal Company, Inc.',
     'abstract': 'C T. Many concession agreements between governments of developing countries and corporations have failed to produce expected infrastructural, monetary, and efficiency gains. This Note argues that these agreements fail in part because the parties construct them as traditional private contracts. Given their subject matter, their noneconomic focus and purposes, and the ways in which they shape future economic development strategy, international policymakers and business leaders should conceptually and procedurally recast concession agreements as traditional matters of public policy. This reinterpretation will make the agreements more stable and successful by making their costs and benefits more transparent, their drafters more accountable to the populations they are intended to benefit, and their terms more responsive to the concerns of those populations',
@@ -936,19 +772,12 @@ var sampleReferences =
         family: 'Nicholas Miranda',
         given: '',
         literal: 'Nicholas Miranda',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'qne70flb0r'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'From Domestic to Global? Recent Trends in Environmental Liability from a Multi-Level and Comparative Law Perspective',
     'container-title': 'Review of European Community & International Environmental Law',
     page: 'pp. 289-303.',
@@ -964,9 +793,6 @@ var sampleReferences =
         family: 'Emanuela Orlando',
         given: '',
         literal: 'Emanuela Orlando',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -982,10 +808,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Blinking on the Bench: How Judges Decide Cases',
     'container-title': 'Cornell Law Review',
     page: '1-44',
@@ -999,23 +821,14 @@ var sampleReferences =
       {
         family: 'Guthrie',
         given: 'Chris',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Rachlinski',
         given: 'Jeffrey J.',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Wistrich',
         given: 'Andrew J.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1044,10 +857,6 @@ var sampleReferences =
 [
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Litigation in Japan: a new look at old problems',
     'container-title': 'Willamette Journal of International Law and Dispute Resolution',
     page: '121-142',
@@ -1061,9 +870,6 @@ var sampleReferences =
       {
         family: 'Haley',
         given: 'John O.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1086,10 +892,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Baseball Players\' Labor Market',
     'container-title': 'Journal of Political Economy',
     page: '242-258',
@@ -1103,9 +905,6 @@ var sampleReferences =
       {
         family: 'Rottenberg',
         given: 'Simon',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1130,10 +929,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Handbook on the International Transfer of Sentenced Persons',
     page: '78',
     source: 'Zotero',
@@ -1142,10 +937,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'In search of an effective monitoring board model: board reforms and the political economy of corporate law in china',
     'container-title': 'connecticut joural of international law',
     page: '1-47',
@@ -1157,9 +948,6 @@ var sampleReferences =
       {
         family: 'Xi',
         given: 'Chao',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1173,10 +961,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'BEYOND RESCUECOM v. GOOGLE. THE FUTURE OF KEYWORD ADVERTISING',
     page: '29',
     volume: '25',
@@ -1186,19 +970,12 @@ var sampleReferences =
       {
         family: 'KemnitZer',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'nba7z5k0bh'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'New and Renewable Sources of Energy for Developing Countries',
     'container-title': 'Ambio',
     page: '307-308',
@@ -1211,9 +988,6 @@ var sampleReferences =
       {
         family: 'Kristoferson',
         given: 'Lars',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1236,10 +1010,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Consumer protection in the EU',
     page: '24',
     source: 'Zotero',
@@ -1248,19 +1018,12 @@ var sampleReferences =
       {
         family: 'Jana',
         given: 'VALANT',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'xi2n6sk4s0'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Asymmetric regulation of access and price discrimination in telecommunications',
     page: '24',
     source: 'Zotero',
@@ -1269,19 +1032,12 @@ var sampleReferences =
       {
         family: 'Peitz',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'km56k03fn8'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Civil Society and the Fight against Corruption',
     issue: 'Corruption',
     'abstract': 'This paper provides a state of play analysis of corruption and anti-corruption policies within the public\nsector and law enforcement institutions in the Republic of Moldova. It reflects on the role and potentials\nof civil society actors in the fight against corruption and highlights concrete recommendations for a civil\nsociety driven anti-corruption reform agenda. The paper draws on the results of a series of workshops with\nMoldovan civil society representatives and anti-corruption experts that aimed at identifying successful\nanti-corruption measures for combatting systemic corruption in the Republic of Moldova.',
@@ -1289,34 +1045,21 @@ var sampleReferences =
       {
         family: 'Ruslan Codreanu',
         given: 'Mathias Jopp',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Victor Lutenco',
         given: 'Eremei Priseajniuc',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Martin Sieg',
         given: '',
         literal: 'Martin Sieg',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'eaukzxfpk8'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Implications of Licensing Agreements and the First Sale Doctrine on U.S. And EU Secondary Markets for Digital Goods',
     'container-title': 'DUKE JOURNAL OF COMPARATIVE & INTERNATIONAL LAW',
     page: '28',
@@ -1327,19 +1070,12 @@ var sampleReferences =
       {
         family: 'Cobb',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'xjzd7wyj1v'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Art of Writing Judgments',
     page: '6',
     source: 'Zotero',
@@ -1348,10 +1084,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Ottoman Tax Registers ( <i>Tahrir Defterleri</i> )',
     'container-title': 'Historical Methods: A Journal of Quantitative and Interdisciplinary History',
     page: '87-102',
@@ -1367,9 +1099,6 @@ var sampleReferences =
       {
         family: 'CoşGel',
         given: 'Metin M',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1393,10 +1122,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Bananas, Laos and economic development: farming practice and farmers\' perceptions',
     page: '188',
     source: 'Zotero',
@@ -1405,28 +1130,17 @@ var sampleReferences =
       {
         family: 'Vansilalom',
         given: 'Viengphet',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'ej4f7422m5'
   },
   {
     type: 'article',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'European Convention on the Transfer of Sentenced Persons.pdf',
     id: 'mcmtlganfy'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: '‘Better-Practice’ Concessions? Lessons from Cambodia’s Leopard-Skin Landscape',
     'container-title': 'Brill',
     'collection-title': 'Large-Scale Land Acquisitions',
@@ -1436,9 +1150,6 @@ var sampleReferences =
         family: 'Michael B. Dwyer, Emily Polack and  Sokbunthoeun So',
         given: 'Christophe Gironde',
         suffix: 'Christophe Golay, Peter Messerli',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1452,10 +1163,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Roots of the modern interstate border dispute',
     'container-title': 'The Journal of Conflict Resolution',
     page: '427-454',
@@ -1469,9 +1176,6 @@ var sampleReferences =
       {
         family: 'Mandel',
         given: 'Robert',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1494,10 +1198,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'E‐government and developing countries: an overview',
     'container-title': 'International Review of Law, Computers & Technology',
     page: '109-132',
@@ -1513,9 +1213,6 @@ var sampleReferences =
       {
         family: 'Basu',
         given: 'Subhajit',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1539,10 +1236,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness in International Law: A Historic Overview',
     page: '7',
     source: 'Zotero',
@@ -1551,19 +1244,12 @@ var sampleReferences =
       {
         family: 'Stiller',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'rh87qk6idz'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'French Domestic Arbitration Law Special Feature',
     'container-title': 'International Lawyer (ABA)',
     page: '749-792',
@@ -1576,9 +1262,6 @@ var sampleReferences =
       {
         family: 'Seppala',
         given: 'Christopher R.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1601,10 +1284,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Recruitment and Training of Bureaucrats in the United States',
     'container-title': 'The Annals of the American Academy of Political and Social Science',
     page: '39-44',
@@ -1616,9 +1295,6 @@ var sampleReferences =
       {
         family: 'Sayre',
         given: 'Wallace S.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1641,10 +1317,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness: Violation or Conduit for Violation of Human Rights?',
     'container-title': 'Human Rights Quarterly',
     page: '106',
@@ -1660,9 +1332,6 @@ var sampleReferences =
       {
         family: 'Walker',
         given: 'Dorothy Jean',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1686,10 +1355,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'TAX PLANNING FOR CAPITAL ASSET DISPOSAL IS COMPLEX YET NECESSARY.',
     page: '5',
     source: 'Zotero',
@@ -1698,40 +1363,24 @@ var sampleReferences =
       {
         family: 'Joy',
         given: 'David',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Vecchio',
         given: 'Stephen C Del',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Clinton',
         given: 'B D Ouglas',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Young',
         given: 'James C',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'ta0b9ff5bs'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Concession Agreements: From Private Contract to Public Policy',
     'container-title': 'The Yale Law Journal Company, Inc.',
     'abstract': 'C T. Many concession agreements between governments of developing countries and corporations have failed to produce expected infrastructural, monetary, and efficiency gains. This Note argues that these agreements fail in part because the parties construct them as traditional private contracts. Given their subject matter, their noneconomic focus and purposes, and the ways in which they shape future economic development strategy, international policymakers and business leaders should conceptually and procedurally recast concession agreements as traditional matters of public policy. This reinterpretation will make the agreements more stable and successful by making their costs and benefits more transparent, their drafters more accountable to the populations they are intended to benefit, and their terms more responsive to the concerns of those populations',
@@ -1741,19 +1390,12 @@ var sampleReferences =
         family: 'Nicholas Miranda',
         given: '',
         literal: 'Nicholas Miranda',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'gmtdjgn91p'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'From Domestic to Global? Recent Trends in Environmental Liability from a Multi-Level and Comparative Law Perspective',
     'container-title': 'Review of European Community & International Environmental Law',
     page: 'pp. 289-303.',
@@ -1769,9 +1411,6 @@ var sampleReferences =
         family: 'Emanuela Orlando',
         given: '',
         literal: 'Emanuela Orlando',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1787,10 +1426,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Blinking on the Bench: How Judges Decide Cases',
     'container-title': 'Cornell Law Review',
     page: '1-44',
@@ -1804,23 +1439,14 @@ var sampleReferences =
       {
         family: 'Guthrie',
         given: 'Chris',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Rachlinski',
         given: 'Jeffrey J.',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Wistrich',
         given: 'Andrew J.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1850,10 +1476,6 @@ var sampleReferences =
 [
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Litigation in Japan: a new look at old problems',
     'container-title': 'Willamette Journal of International Law and Dispute Resolution',
     page: '121-142',
@@ -1867,9 +1489,6 @@ var sampleReferences =
       {
         family: 'Haley',
         given: 'John O.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1892,10 +1511,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Baseball Players\' Labor Market',
     'container-title': 'Journal of Political Economy',
     page: '242-258',
@@ -1909,9 +1524,6 @@ var sampleReferences =
       {
         family: 'Rottenberg',
         given: 'Simon',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1936,10 +1548,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Handbook on the International Transfer of Sentenced Persons',
     page: '78',
     source: 'Zotero',
@@ -1948,10 +1556,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'In search of an effective monitoring board model: board reforms and the political economy of corporate law in china',
     'container-title': 'connecticut joural of international law',
     page: '1-47',
@@ -1963,9 +1567,6 @@ var sampleReferences =
       {
         family: 'Xi',
         given: 'Chao',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -1979,10 +1580,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'BEYOND RESCUECOM v. GOOGLE. THE FUTURE OF KEYWORD ADVERTISING',
     page: '29',
     volume: '25',
@@ -1992,19 +1589,12 @@ var sampleReferences =
       {
         family: 'KemnitZer',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'i6h9nzw1tv'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'New and Renewable Sources of Energy for Developing Countries',
     'container-title': 'Ambio',
     page: '307-308',
@@ -2017,9 +1607,6 @@ var sampleReferences =
       {
         family: 'Kristoferson',
         given: 'Lars',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2042,10 +1629,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Consumer protection in the EU',
     page: '24',
     source: 'Zotero',
@@ -2054,19 +1637,12 @@ var sampleReferences =
       {
         family: 'Jana',
         given: 'VALANT',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'rj8it9b938'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Asymmetric regulation of access and price discrimination in telecommunications',
     page: '24',
     source: 'Zotero',
@@ -2075,19 +1651,12 @@ var sampleReferences =
       {
         family: 'Peitz',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'm213qbwvwc'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Civil Society and the Fight against Corruption',
     issue: 'Corruption',
     'abstract': 'This paper provides a state of play analysis of corruption and anti-corruption policies within the public\nsector and law enforcement institutions in the Republic of Moldova. It reflects on the role and potentials\nof civil society actors in the fight against corruption and highlights concrete recommendations for a civil\nsociety driven anti-corruption reform agenda. The paper draws on the results of a series of workshops with\nMoldovan civil society representatives and anti-corruption experts that aimed at identifying successful\nanti-corruption measures for combatting systemic corruption in the Republic of Moldova.',
@@ -2095,34 +1664,21 @@ var sampleReferences =
       {
         family: 'Ruslan Codreanu',
         given: 'Mathias Jopp',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Victor Lutenco',
         given: 'Eremei Priseajniuc',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Martin Sieg',
         given: '',
         literal: 'Martin Sieg',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '7jsb0mncr2'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Implications of Licensing Agreements and the First Sale Doctrine on U.S. And EU Secondary Markets for Digital Goods',
     'container-title': 'DUKE JOURNAL OF COMPARATIVE & INTERNATIONAL LAW',
     page: '28',
@@ -2133,19 +1689,12 @@ var sampleReferences =
       {
         family: 'Cobb',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'x7bca1dek8'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Art of Writing Judgments',
     page: '6',
     source: 'Zotero',
@@ -2154,10 +1703,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Ottoman Tax Registers ( <i>Tahrir Defterleri</i> )',
     'container-title': 'Historical Methods: A Journal of Quantitative and Interdisciplinary History',
     page: '87-102',
@@ -2173,9 +1718,6 @@ var sampleReferences =
       {
         family: 'CoşGel',
         given: 'Metin M',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2199,10 +1741,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Bananas, Laos and economic development: farming practice and farmers\' perceptions',
     page: '188',
     source: 'Zotero',
@@ -2211,28 +1749,17 @@ var sampleReferences =
       {
         family: 'Vansilalom',
         given: 'Viengphet',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'hzyqhhv60r'
   },
   {
     type: 'article',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'European Convention on the Transfer of Sentenced Persons.pdf',
     id: '40vm0fdzh4'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: '‘Better-Practice’ Concessions? Lessons from Cambodia’s Leopard-Skin Landscape',
     'container-title': 'Brill',
     'collection-title': 'Large-Scale Land Acquisitions',
@@ -2242,9 +1769,6 @@ var sampleReferences =
         family: 'Michael B. Dwyer, Emily Polack and  Sokbunthoeun So',
         given: 'Christophe Gironde',
         suffix: 'Christophe Golay, Peter Messerli',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2258,10 +1782,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Roots of the modern interstate border dispute',
     'container-title': 'The Journal of Conflict Resolution',
     page: '427-454',
@@ -2275,9 +1795,6 @@ var sampleReferences =
       {
         family: 'Mandel',
         given: 'Robert',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2300,10 +1817,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'E‐government and developing countries: an overview',
     'container-title': 'International Review of Law, Computers & Technology',
     page: '109-132',
@@ -2319,9 +1832,6 @@ var sampleReferences =
       {
         family: 'Basu',
         given: 'Subhajit',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2345,10 +1855,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness in International Law: A Historic Overview',
     page: '7',
     source: 'Zotero',
@@ -2357,19 +1863,12 @@ var sampleReferences =
       {
         family: 'Stiller',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'm6fj5vh09s'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'French Domestic Arbitration Law Special Feature',
     'container-title': 'International Lawyer (ABA)',
     page: '749-792',
@@ -2382,9 +1881,6 @@ var sampleReferences =
       {
         family: 'Seppala',
         given: 'Christopher R.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2407,10 +1903,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Recruitment and Training of Bureaucrats in the United States',
     'container-title': 'The Annals of the American Academy of Political and Social Science',
     page: '39-44',
@@ -2422,9 +1914,6 @@ var sampleReferences =
       {
         family: 'Sayre',
         given: 'Wallace S.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2447,10 +1936,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness: Violation or Conduit for Violation of Human Rights?',
     'container-title': 'Human Rights Quarterly',
     page: '106',
@@ -2466,9 +1951,6 @@ var sampleReferences =
       {
         family: 'Walker',
         given: 'Dorothy Jean',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2492,10 +1974,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'TAX PLANNING FOR CAPITAL ASSET DISPOSAL IS COMPLEX YET NECESSARY.',
     page: '5',
     source: 'Zotero',
@@ -2504,40 +1982,24 @@ var sampleReferences =
       {
         family: 'Joy',
         given: 'David',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Vecchio',
         given: 'Stephen C Del',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Clinton',
         given: 'B D Ouglas',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Young',
         given: 'James C',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '8rzb680mft'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Concession Agreements: From Private Contract to Public Policy',
     'container-title': 'The Yale Law Journal Company, Inc.',
     'abstract': 'C T. Many concession agreements between governments of developing countries and corporations have failed to produce expected infrastructural, monetary, and efficiency gains. This Note argues that these agreements fail in part because the parties construct them as traditional private contracts. Given their subject matter, their noneconomic focus and purposes, and the ways in which they shape future economic development strategy, international policymakers and business leaders should conceptually and procedurally recast concession agreements as traditional matters of public policy. This reinterpretation will make the agreements more stable and successful by making their costs and benefits more transparent, their drafters more accountable to the populations they are intended to benefit, and their terms more responsive to the concerns of those populations',
@@ -2547,19 +2009,12 @@ var sampleReferences =
         family: 'Nicholas Miranda',
         given: '',
         literal: 'Nicholas Miranda',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'g3y1l41vfw'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'From Domestic to Global? Recent Trends in Environmental Liability from a Multi-Level and Comparative Law Perspective',
     'container-title': 'Review of European Community & International Environmental Law',
     page: 'pp. 289-303.',
@@ -2575,9 +2030,6 @@ var sampleReferences =
         family: 'Emanuela Orlando',
         given: '',
         literal: 'Emanuela Orlando',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2593,10 +2045,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Blinking on the Bench: How Judges Decide Cases',
     'container-title': 'Cornell Law Review',
     page: '1-44',
@@ -2610,23 +2058,14 @@ var sampleReferences =
       {
         family: 'Guthrie',
         given: 'Chris',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Rachlinski',
         given: 'Jeffrey J.',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Wistrich',
         given: 'Andrew J.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2655,10 +2094,6 @@ var sampleReferences =
 [
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Litigation in Japan: a new look at old problems',
     'container-title': 'Willamette Journal of International Law and Dispute Resolution',
     page: '121-142',
@@ -2672,9 +2107,6 @@ var sampleReferences =
       {
         family: 'Haley',
         given: 'John O.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2697,10 +2129,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Baseball Players\' Labor Market',
     'container-title': 'Journal of Political Economy',
     page: '242-258',
@@ -2714,9 +2142,6 @@ var sampleReferences =
       {
         family: 'Rottenberg',
         given: 'Simon',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2741,10 +2166,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Handbook on the International Transfer of Sentenced Persons',
     page: '78',
     source: 'Zotero',
@@ -2753,10 +2174,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'In search of an effective monitoring board model: board reforms and the political economy of corporate law in china',
     'container-title': 'connecticut joural of international law',
     page: '1-47',
@@ -2768,9 +2185,6 @@ var sampleReferences =
       {
         family: 'Xi',
         given: 'Chao',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2784,10 +2198,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'BEYOND RESCUECOM v. GOOGLE. THE FUTURE OF KEYWORD ADVERTISING',
     page: '29',
     volume: '25',
@@ -2797,19 +2207,12 @@ var sampleReferences =
       {
         family: 'KemnitZer',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'sp22egplrx'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'New and Renewable Sources of Energy for Developing Countries',
     'container-title': 'Ambio',
     page: '307-308',
@@ -2822,9 +2225,6 @@ var sampleReferences =
       {
         family: 'Kristoferson',
         given: 'Lars',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -2847,10 +2247,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Consumer protection in the EU',
     page: '24',
     source: 'Zotero',
@@ -2859,19 +2255,12 @@ var sampleReferences =
       {
         family: 'Jana',
         given: 'VALANT',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'n5l9glltc1'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Asymmetric regulation of access and price discrimination in telecommunications',
     page: '24',
     source: 'Zotero',
@@ -2880,19 +2269,12 @@ var sampleReferences =
       {
         family: 'Peitz',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'g0ah54u0f6'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Civil Society and the Fight against Corruption',
     issue: 'Corruption',
     'abstract': 'This paper provides a state of play analysis of corruption and anti-corruption policies within the public\nsector and law enforcement institutions in the Republic of Moldova. It reflects on the role and potentials\nof civil society actors in the fight against corruption and highlights concrete recommendations for a civil\nsociety driven anti-corruption reform agenda. The paper draws on the results of a series of workshops with\nMoldovan civil society representatives and anti-corruption experts that aimed at identifying successful\nanti-corruption measures for combatting systemic corruption in the Republic of Moldova.',
@@ -2900,34 +2282,21 @@ var sampleReferences =
       {
         family: 'Ruslan Codreanu',
         given: 'Mathias Jopp',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Victor Lutenco',
         given: 'Eremei Priseajniuc',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Martin Sieg',
         given: '',
         literal: 'Martin Sieg',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '0om5ukv76v'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Implications of Licensing Agreements and the First Sale Doctrine on U.S. And EU Secondary Markets for Digital Goods',
     'container-title': 'DUKE JOURNAL OF COMPARATIVE & INTERNATIONAL LAW',
     page: '28',
@@ -2938,19 +2307,12 @@ var sampleReferences =
       {
         family: 'Cobb',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'gqxurotyj3'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Art of Writing Judgments',
     page: '6',
     source: 'Zotero',
@@ -2959,10 +2321,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Ottoman Tax Registers ( <i>Tahrir Defterleri</i> )',
     'container-title': 'Historical Methods: A Journal of Quantitative and Interdisciplinary History',
     page: '87-102',
@@ -2978,9 +2336,6 @@ var sampleReferences =
       {
         family: 'CoşGel',
         given: 'Metin M',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3004,10 +2359,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Bananas, Laos and economic development: farming practice and farmers\' perceptions',
     page: '188',
     source: 'Zotero',
@@ -3016,28 +2367,17 @@ var sampleReferences =
       {
         family: 'Vansilalom',
         given: 'Viengphet',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 're4pb4v5jt'
   },
   {
     type: 'article',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'European Convention on the Transfer of Sentenced Persons.pdf',
     id: 'l0z8vp1ukh'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: '‘Better-Practice’ Concessions? Lessons from Cambodia’s Leopard-Skin Landscape',
     'container-title': 'Brill',
     'collection-title': 'Large-Scale Land Acquisitions',
@@ -3047,9 +2387,6 @@ var sampleReferences =
         family: 'Michael B. Dwyer, Emily Polack and  Sokbunthoeun So',
         given: 'Christophe Gironde',
         suffix: 'Christophe Golay, Peter Messerli',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3063,10 +2400,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Roots of the modern interstate border dispute',
     'container-title': 'The Journal of Conflict Resolution',
     page: '427-454',
@@ -3080,9 +2413,6 @@ var sampleReferences =
       {
         family: 'Mandel',
         given: 'Robert',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3105,10 +2435,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'E‐government and developing countries: an overview',
     'container-title': 'International Review of Law, Computers & Technology',
     page: '109-132',
@@ -3124,9 +2450,6 @@ var sampleReferences =
       {
         family: 'Basu',
         given: 'Subhajit',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3150,10 +2473,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness in International Law: A Historic Overview',
     page: '7',
     source: 'Zotero',
@@ -3162,19 +2481,12 @@ var sampleReferences =
       {
         family: 'Stiller',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'htpf8pnqra'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'French Domestic Arbitration Law Special Feature',
     'container-title': 'International Lawyer (ABA)',
     page: '749-792',
@@ -3187,9 +2499,6 @@ var sampleReferences =
       {
         family: 'Seppala',
         given: 'Christopher R.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3212,10 +2521,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Recruitment and Training of Bureaucrats in the United States',
     'container-title': 'The Annals of the American Academy of Political and Social Science',
     page: '39-44',
@@ -3227,9 +2532,6 @@ var sampleReferences =
       {
         family: 'Sayre',
         given: 'Wallace S.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3252,10 +2554,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness: Violation or Conduit for Violation of Human Rights?',
     'container-title': 'Human Rights Quarterly',
     page: '106',
@@ -3271,9 +2569,6 @@ var sampleReferences =
       {
         family: 'Walker',
         given: 'Dorothy Jean',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3297,10 +2592,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'TAX PLANNING FOR CAPITAL ASSET DISPOSAL IS COMPLEX YET NECESSARY.',
     page: '5',
     source: 'Zotero',
@@ -3309,40 +2600,24 @@ var sampleReferences =
       {
         family: 'Joy',
         given: 'David',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Vecchio',
         given: 'Stephen C Del',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Clinton',
         given: 'B D Ouglas',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Young',
         given: 'James C',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '65uqtpz7yf'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Concession Agreements: From Private Contract to Public Policy',
     'container-title': 'The Yale Law Journal Company, Inc.',
     'abstract': 'C T. Many concession agreements between governments of developing countries and corporations have failed to produce expected infrastructural, monetary, and efficiency gains. This Note argues that these agreements fail in part because the parties construct them as traditional private contracts. Given their subject matter, their noneconomic focus and purposes, and the ways in which they shape future economic development strategy, international policymakers and business leaders should conceptually and procedurally recast concession agreements as traditional matters of public policy. This reinterpretation will make the agreements more stable and successful by making their costs and benefits more transparent, their drafters more accountable to the populations they are intended to benefit, and their terms more responsive to the concerns of those populations',
@@ -3352,19 +2627,12 @@ var sampleReferences =
         family: 'Nicholas Miranda',
         given: '',
         literal: 'Nicholas Miranda',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '9xlqxpx07x'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'From Domestic to Global? Recent Trends in Environmental Liability from a Multi-Level and Comparative Law Perspective',
     'container-title': 'Review of European Community & International Environmental Law',
     page: 'pp. 289-303.',
@@ -3380,9 +2648,6 @@ var sampleReferences =
         family: 'Emanuela Orlando',
         given: '',
         literal: 'Emanuela Orlando',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3398,10 +2663,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Blinking on the Bench: How Judges Decide Cases',
     'container-title': 'Cornell Law Review',
     page: '1-44',
@@ -3415,23 +2676,14 @@ var sampleReferences =
       {
         family: 'Guthrie',
         given: 'Chris',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Rachlinski',
         given: 'Jeffrey J.',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Wistrich',
         given: 'Andrew J.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3460,10 +2712,6 @@ var sampleReferences =
 [
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Litigation in Japan: a new look at old problems',
     'container-title': 'Willamette Journal of International Law and Dispute Resolution',
     page: '121-142',
@@ -3477,9 +2725,6 @@ var sampleReferences =
       {
         family: 'Haley',
         given: 'John O.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3502,10 +2747,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Baseball Players\' Labor Market',
     'container-title': 'Journal of Political Economy',
     page: '242-258',
@@ -3519,9 +2760,6 @@ var sampleReferences =
       {
         family: 'Rottenberg',
         given: 'Simon',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3546,10 +2784,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Handbook on the International Transfer of Sentenced Persons',
     page: '78',
     source: 'Zotero',
@@ -3558,10 +2792,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'In search of an effective monitoring board model: board reforms and the political economy of corporate law in china',
     'container-title': 'connecticut joural of international law',
     page: '1-47',
@@ -3573,9 +2803,6 @@ var sampleReferences =
       {
         family: 'Xi',
         given: 'Chao',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3589,10 +2816,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'BEYOND RESCUECOM v. GOOGLE. THE FUTURE OF KEYWORD ADVERTISING',
     page: '29',
     volume: '25',
@@ -3602,19 +2825,12 @@ var sampleReferences =
       {
         family: 'KemnitZer',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'nsbvfhr991'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'New and Renewable Sources of Energy for Developing Countries',
     'container-title': 'Ambio',
     page: '307-308',
@@ -3627,9 +2843,6 @@ var sampleReferences =
       {
         family: 'Kristoferson',
         given: 'Lars',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3652,10 +2865,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Consumer protection in the EU',
     page: '24',
     source: 'Zotero',
@@ -3664,19 +2873,12 @@ var sampleReferences =
       {
         family: 'Jana',
         given: 'VALANT',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'o0oe71bgug'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Asymmetric regulation of access and price discrimination in telecommunications',
     page: '24',
     source: 'Zotero',
@@ -3685,19 +2887,12 @@ var sampleReferences =
       {
         family: 'Peitz',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'kqm7k6bbbq'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Civil Society and the Fight against Corruption',
     issue: 'Corruption',
     'abstract': 'This paper provides a state of play analysis of corruption and anti-corruption policies within the public\nsector and law enforcement institutions in the Republic of Moldova. It reflects on the role and potentials\nof civil society actors in the fight against corruption and highlights concrete recommendations for a civil\nsociety driven anti-corruption reform agenda. The paper draws on the results of a series of workshops with\nMoldovan civil society representatives and anti-corruption experts that aimed at identifying successful\nanti-corruption measures for combatting systemic corruption in the Republic of Moldova.',
@@ -3705,34 +2900,21 @@ var sampleReferences =
       {
         family: 'Ruslan Codreanu',
         given: 'Mathias Jopp',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Victor Lutenco',
         given: 'Eremei Priseajniuc',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Martin Sieg',
         given: '',
         literal: 'Martin Sieg',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'cyd3nz17nl'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Implications of Licensing Agreements and the First Sale Doctrine on U.S. And EU Secondary Markets for Digital Goods',
     'container-title': 'DUKE JOURNAL OF COMPARATIVE & INTERNATIONAL LAW',
     page: '28',
@@ -3743,19 +2925,12 @@ var sampleReferences =
       {
         family: 'Cobb',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '95iafijrbo'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Art of Writing Judgments',
     page: '6',
     source: 'Zotero',
@@ -3764,10 +2939,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Ottoman Tax Registers ( <i>Tahrir Defterleri</i> )',
     'container-title': 'Historical Methods: A Journal of Quantitative and Interdisciplinary History',
     page: '87-102',
@@ -3783,9 +2954,6 @@ var sampleReferences =
       {
         family: 'CoşGel',
         given: 'Metin M',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3809,10 +2977,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Bananas, Laos and economic development: farming practice and farmers\' perceptions',
     page: '188',
     source: 'Zotero',
@@ -3821,28 +2985,17 @@ var sampleReferences =
       {
         family: 'Vansilalom',
         given: 'Viengphet',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'mh9pvhach3'
   },
   {
     type: 'article',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'European Convention on the Transfer of Sentenced Persons.pdf',
     id: '91uosfa995'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: '‘Better-Practice’ Concessions? Lessons from Cambodia’s Leopard-Skin Landscape',
     'container-title': 'Brill',
     'collection-title': 'Large-Scale Land Acquisitions',
@@ -3852,9 +3005,6 @@ var sampleReferences =
         family: 'Michael B. Dwyer, Emily Polack and  Sokbunthoeun So',
         given: 'Christophe Gironde',
         suffix: 'Christophe Golay, Peter Messerli',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3868,10 +3018,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Roots of the modern interstate border dispute',
     'container-title': 'The Journal of Conflict Resolution',
     page: '427-454',
@@ -3885,9 +3031,6 @@ var sampleReferences =
       {
         family: 'Mandel',
         given: 'Robert',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3910,10 +3053,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'E‐government and developing countries: an overview',
     'container-title': 'International Review of Law, Computers & Technology',
     page: '109-132',
@@ -3929,9 +3068,6 @@ var sampleReferences =
       {
         family: 'Basu',
         given: 'Subhajit',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -3955,10 +3091,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness in International Law: A Historic Overview',
     page: '7',
     source: 'Zotero',
@@ -3967,19 +3099,12 @@ var sampleReferences =
       {
         family: 'Stiller',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'hn3nj0rfpl'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'French Domestic Arbitration Law Special Feature',
     'container-title': 'International Lawyer (ABA)',
     page: '749-792',
@@ -3992,9 +3117,6 @@ var sampleReferences =
       {
         family: 'Seppala',
         given: 'Christopher R.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4017,10 +3139,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Recruitment and Training of Bureaucrats in the United States',
     'container-title': 'The Annals of the American Academy of Political and Social Science',
     page: '39-44',
@@ -4032,9 +3150,6 @@ var sampleReferences =
       {
         family: 'Sayre',
         given: 'Wallace S.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4057,10 +3172,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness: Violation or Conduit for Violation of Human Rights?',
     'container-title': 'Human Rights Quarterly',
     page: '106',
@@ -4076,9 +3187,6 @@ var sampleReferences =
       {
         family: 'Walker',
         given: 'Dorothy Jean',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4102,10 +3210,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'TAX PLANNING FOR CAPITAL ASSET DISPOSAL IS COMPLEX YET NECESSARY.',
     page: '5',
     source: 'Zotero',
@@ -4114,40 +3218,24 @@ var sampleReferences =
       {
         family: 'Joy',
         given: 'David',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Vecchio',
         given: 'Stephen C Del',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Clinton',
         given: 'B D Ouglas',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Young',
         given: 'James C',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'fkzrj0y99l'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Concession Agreements: From Private Contract to Public Policy',
     'container-title': 'The Yale Law Journal Company, Inc.',
     'abstract': 'C T. Many concession agreements between governments of developing countries and corporations have failed to produce expected infrastructural, monetary, and efficiency gains. This Note argues that these agreements fail in part because the parties construct them as traditional private contracts. Given their subject matter, their noneconomic focus and purposes, and the ways in which they shape future economic development strategy, international policymakers and business leaders should conceptually and procedurally recast concession agreements as traditional matters of public policy. This reinterpretation will make the agreements more stable and successful by making their costs and benefits more transparent, their drafters more accountable to the populations they are intended to benefit, and their terms more responsive to the concerns of those populations',
@@ -4157,19 +3245,12 @@ var sampleReferences =
         family: 'Nicholas Miranda',
         given: '',
         literal: 'Nicholas Miranda',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '5cb1u3gq5x'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'From Domestic to Global? Recent Trends in Environmental Liability from a Multi-Level and Comparative Law Perspective',
     'container-title': 'Review of European Community & International Environmental Law',
     page: 'pp. 289-303.',
@@ -4185,9 +3266,6 @@ var sampleReferences =
         family: 'Emanuela Orlando',
         given: '',
         literal: 'Emanuela Orlando',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4203,10 +3281,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Blinking on the Bench: How Judges Decide Cases',
     'container-title': 'Cornell Law Review',
     page: '1-44',
@@ -4220,23 +3294,14 @@ var sampleReferences =
       {
         family: 'Guthrie',
         given: 'Chris',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Rachlinski',
         given: 'Jeffrey J.',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Wistrich',
         given: 'Andrew J.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4266,10 +3331,6 @@ var sampleReferences =
 [
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Litigation in Japan: a new look at old problems',
     'container-title': 'Willamette Journal of International Law and Dispute Resolution',
     page: '121-142',
@@ -4283,9 +3344,6 @@ var sampleReferences =
       {
         family: 'Haley',
         given: 'John O.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4308,10 +3366,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Baseball Players\' Labor Market',
     'container-title': 'Journal of Political Economy',
     page: '242-258',
@@ -4325,9 +3379,6 @@ var sampleReferences =
       {
         family: 'Rottenberg',
         given: 'Simon',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4352,10 +3403,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Handbook on the International Transfer of Sentenced Persons',
     page: '78',
     source: 'Zotero',
@@ -4364,10 +3411,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'In search of an effective monitoring board model: board reforms and the political economy of corporate law in china',
     'container-title': 'connecticut joural of international law',
     page: '1-47',
@@ -4379,9 +3422,6 @@ var sampleReferences =
       {
         family: 'Xi',
         given: 'Chao',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4395,10 +3435,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'BEYOND RESCUECOM v. GOOGLE. THE FUTURE OF KEYWORD ADVERTISING',
     page: '29',
     volume: '25',
@@ -4408,19 +3444,12 @@ var sampleReferences =
       {
         family: 'KemnitZer',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'yssf34lje2'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'New and Renewable Sources of Energy for Developing Countries',
     'container-title': 'Ambio',
     page: '307-308',
@@ -4433,9 +3462,6 @@ var sampleReferences =
       {
         family: 'Kristoferson',
         given: 'Lars',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4458,10 +3484,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Consumer protection in the EU',
     page: '24',
     source: 'Zotero',
@@ -4470,19 +3492,12 @@ var sampleReferences =
       {
         family: 'Jana',
         given: 'VALANT',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'ha4mfhcqr4'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Asymmetric regulation of access and price discrimination in telecommunications',
     page: '24',
     source: 'Zotero',
@@ -4491,19 +3506,12 @@ var sampleReferences =
       {
         family: 'Peitz',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'y0yn7cxp0r'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Civil Society and the Fight against Corruption',
     issue: 'Corruption',
     'abstract': 'This paper provides a state of play analysis of corruption and anti-corruption policies within the public\nsector and law enforcement institutions in the Republic of Moldova. It reflects on the role and potentials\nof civil society actors in the fight against corruption and highlights concrete recommendations for a civil\nsociety driven anti-corruption reform agenda. The paper draws on the results of a series of workshops with\nMoldovan civil society representatives and anti-corruption experts that aimed at identifying successful\nanti-corruption measures for combatting systemic corruption in the Republic of Moldova.',
@@ -4511,34 +3519,21 @@ var sampleReferences =
       {
         family: 'Ruslan Codreanu',
         given: 'Mathias Jopp',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Victor Lutenco',
         given: 'Eremei Priseajniuc',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Martin Sieg',
         given: '',
         literal: 'Martin Sieg',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '5g61pmu1ku'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Implications of Licensing Agreements and the First Sale Doctrine on U.S. And EU Secondary Markets for Digital Goods',
     'container-title': 'DUKE JOURNAL OF COMPARATIVE & INTERNATIONAL LAW',
     page: '28',
@@ -4549,19 +3544,12 @@ var sampleReferences =
       {
         family: 'Cobb',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '3d25w9dhhe'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Art of Writing Judgments',
     page: '6',
     source: 'Zotero',
@@ -4570,10 +3558,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Ottoman Tax Registers ( <i>Tahrir Defterleri</i> )',
     'container-title': 'Historical Methods: A Journal of Quantitative and Interdisciplinary History',
     page: '87-102',
@@ -4589,9 +3573,6 @@ var sampleReferences =
       {
         family: 'CoşGel',
         given: 'Metin M',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4615,10 +3596,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Bananas, Laos and economic development: farming practice and farmers\' perceptions',
     page: '188',
     source: 'Zotero',
@@ -4627,28 +3604,17 @@ var sampleReferences =
       {
         family: 'Vansilalom',
         given: 'Viengphet',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'fwg2x32wzo'
   },
   {
     type: 'article',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'European Convention on the Transfer of Sentenced Persons.pdf',
     id: 'hkpvwime47'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: '‘Better-Practice’ Concessions? Lessons from Cambodia’s Leopard-Skin Landscape',
     'container-title': 'Brill',
     'collection-title': 'Large-Scale Land Acquisitions',
@@ -4658,9 +3624,6 @@ var sampleReferences =
         family: 'Michael B. Dwyer, Emily Polack and  Sokbunthoeun So',
         given: 'Christophe Gironde',
         suffix: 'Christophe Golay, Peter Messerli',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4674,10 +3637,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Roots of the modern interstate border dispute',
     'container-title': 'The Journal of Conflict Resolution',
     page: '427-454',
@@ -4691,9 +3650,6 @@ var sampleReferences =
       {
         family: 'Mandel',
         given: 'Robert',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4716,10 +3672,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'E‐government and developing countries: an overview',
     'container-title': 'International Review of Law, Computers & Technology',
     page: '109-132',
@@ -4735,9 +3687,6 @@ var sampleReferences =
       {
         family: 'Basu',
         given: 'Subhajit',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4761,10 +3710,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness in International Law: A Historic Overview',
     page: '7',
     source: 'Zotero',
@@ -4773,19 +3718,12 @@ var sampleReferences =
       {
         family: 'Stiller',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'zer61zlxm4'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'French Domestic Arbitration Law Special Feature',
     'container-title': 'International Lawyer (ABA)',
     page: '749-792',
@@ -4798,9 +3736,6 @@ var sampleReferences =
       {
         family: 'Seppala',
         given: 'Christopher R.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4823,10 +3758,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Recruitment and Training of Bureaucrats in the United States',
     'container-title': 'The Annals of the American Academy of Political and Social Science',
     page: '39-44',
@@ -4838,9 +3769,6 @@ var sampleReferences =
       {
         family: 'Sayre',
         given: 'Wallace S.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4863,10 +3791,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness: Violation or Conduit for Violation of Human Rights?',
     'container-title': 'Human Rights Quarterly',
     page: '106',
@@ -4882,9 +3806,6 @@ var sampleReferences =
       {
         family: 'Walker',
         given: 'Dorothy Jean',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -4908,10 +3829,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'TAX PLANNING FOR CAPITAL ASSET DISPOSAL IS COMPLEX YET NECESSARY.',
     page: '5',
     source: 'Zotero',
@@ -4920,40 +3837,24 @@ var sampleReferences =
       {
         family: 'Joy',
         given: 'David',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Vecchio',
         given: 'Stephen C Del',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Clinton',
         given: 'B D Ouglas',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Young',
         given: 'James C',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '8x61y7n9ls'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Concession Agreements: From Private Contract to Public Policy',
     'container-title': 'The Yale Law Journal Company, Inc.',
     'abstract': 'C T. Many concession agreements between governments of developing countries and corporations have failed to produce expected infrastructural, monetary, and efficiency gains. This Note argues that these agreements fail in part because the parties construct them as traditional private contracts. Given their subject matter, their noneconomic focus and purposes, and the ways in which they shape future economic development strategy, international policymakers and business leaders should conceptually and procedurally recast concession agreements as traditional matters of public policy. This reinterpretation will make the agreements more stable and successful by making their costs and benefits more transparent, their drafters more accountable to the populations they are intended to benefit, and their terms more responsive to the concerns of those populations',
@@ -4963,19 +3864,12 @@ var sampleReferences =
         family: 'Nicholas Miranda',
         given: '',
         literal: 'Nicholas Miranda',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '1jdf6tuusa'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'From Domestic to Global? Recent Trends in Environmental Liability from a Multi-Level and Comparative Law Perspective',
     'container-title': 'Review of European Community & International Environmental Law',
     page: 'pp. 289-303.',
@@ -4991,9 +3885,6 @@ var sampleReferences =
         family: 'Emanuela Orlando',
         given: '',
         literal: 'Emanuela Orlando',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5009,10 +3900,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Blinking on the Bench: How Judges Decide Cases',
     'container-title': 'Cornell Law Review',
     page: '1-44',
@@ -5026,23 +3913,14 @@ var sampleReferences =
       {
         family: 'Guthrie',
         given: 'Chris',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Rachlinski',
         given: 'Jeffrey J.',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Wistrich',
         given: 'Andrew J.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5072,10 +3950,6 @@ var sampleReferences =
 [
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Litigation in Japan: a new look at old problems',
     'container-title': 'Willamette Journal of International Law and Dispute Resolution',
     page: '121-142',
@@ -5089,9 +3963,6 @@ var sampleReferences =
       {
         family: 'Haley',
         given: 'John O.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5114,10 +3985,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Baseball Players\' Labor Market',
     'container-title': 'Journal of Political Economy',
     page: '242-258',
@@ -5131,9 +3998,6 @@ var sampleReferences =
       {
         family: 'Rottenberg',
         given: 'Simon',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5158,10 +4022,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Handbook on the International Transfer of Sentenced Persons',
     page: '78',
     source: 'Zotero',
@@ -5170,10 +4030,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'In search of an effective monitoring board model: board reforms and the political economy of corporate law in china',
     'container-title': 'connecticut joural of international law',
     page: '1-47',
@@ -5185,9 +4041,6 @@ var sampleReferences =
       {
         family: 'Xi',
         given: 'Chao',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5201,10 +4054,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'BEYOND RESCUECOM v. GOOGLE. THE FUTURE OF KEYWORD ADVERTISING',
     page: '29',
     volume: '25',
@@ -5214,19 +4063,12 @@ var sampleReferences =
       {
         family: 'KemnitZer',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'r1runy7hvs'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'New and Renewable Sources of Energy for Developing Countries',
     'container-title': 'Ambio',
     page: '307-308',
@@ -5239,9 +4081,6 @@ var sampleReferences =
       {
         family: 'Kristoferson',
         given: 'Lars',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5264,10 +4103,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Consumer protection in the EU',
     page: '24',
     source: 'Zotero',
@@ -5276,19 +4111,12 @@ var sampleReferences =
       {
         family: 'Jana',
         given: 'VALANT',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '9rzwf15knd'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Asymmetric regulation of access and price discrimination in telecommunications',
     page: '24',
     source: 'Zotero',
@@ -5297,19 +4125,12 @@ var sampleReferences =
       {
         family: 'Peitz',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: '9gdpk7l4tt'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Civil Society and the Fight against Corruption',
     issue: 'Corruption',
     'abstract': 'This paper provides a state of play analysis of corruption and anti-corruption policies within the public\nsector and law enforcement institutions in the Republic of Moldova. It reflects on the role and potentials\nof civil society actors in the fight against corruption and highlights concrete recommendations for a civil\nsociety driven anti-corruption reform agenda. The paper draws on the results of a series of workshops with\nMoldovan civil society representatives and anti-corruption experts that aimed at identifying successful\nanti-corruption measures for combatting systemic corruption in the Republic of Moldova.',
@@ -5317,34 +4138,21 @@ var sampleReferences =
       {
         family: 'Ruslan Codreanu',
         given: 'Mathias Jopp',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Victor Lutenco',
         given: 'Eremei Priseajniuc',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Martin Sieg',
         given: '',
         literal: 'Martin Sieg',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'pbhc543gq0'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Implications of Licensing Agreements and the First Sale Doctrine on U.S. And EU Secondary Markets for Digital Goods',
     'container-title': 'DUKE JOURNAL OF COMPARATIVE & INTERNATIONAL LAW',
     page: '28',
@@ -5355,19 +4163,12 @@ var sampleReferences =
       {
         family: 'Cobb',
         given: 'Kristin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'hnhypaaq81'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Art of Writing Judgments',
     page: '6',
     source: 'Zotero',
@@ -5376,10 +4177,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Ottoman Tax Registers ( <i>Tahrir Defterleri</i> )',
     'container-title': 'Historical Methods: A Journal of Quantitative and Interdisciplinary History',
     page: '87-102',
@@ -5395,9 +4192,6 @@ var sampleReferences =
       {
         family: 'CoşGel',
         given: 'Metin M',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5421,10 +4215,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Bananas, Laos and economic development: farming practice and farmers\' perceptions',
     page: '188',
     source: 'Zotero',
@@ -5433,28 +4223,17 @@ var sampleReferences =
       {
         family: 'Vansilalom',
         given: 'Viengphet',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'j7uwfj2xld'
   },
   {
     type: 'article',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'European Convention on the Transfer of Sentenced Persons.pdf',
     id: 'cdjphlo6u9'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: '‘Better-Practice’ Concessions? Lessons from Cambodia’s Leopard-Skin Landscape',
     'container-title': 'Brill',
     'collection-title': 'Large-Scale Land Acquisitions',
@@ -5464,9 +4243,6 @@ var sampleReferences =
         family: 'Michael B. Dwyer, Emily Polack and  Sokbunthoeun So',
         given: 'Christophe Gironde',
         suffix: 'Christophe Golay, Peter Messerli',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5480,10 +4256,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Roots of the modern interstate border dispute',
     'container-title': 'The Journal of Conflict Resolution',
     page: '427-454',
@@ -5497,9 +4269,6 @@ var sampleReferences =
       {
         family: 'Mandel',
         given: 'Robert',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5522,10 +4291,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'E‐government and developing countries: an overview',
     'container-title': 'International Review of Law, Computers & Technology',
     page: '109-132',
@@ -5541,9 +4306,6 @@ var sampleReferences =
       {
         family: 'Basu',
         given: 'Subhajit',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5567,10 +4329,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness in International Law: A Historic Overview',
     page: '7',
     source: 'Zotero',
@@ -5579,19 +4337,12 @@ var sampleReferences =
       {
         family: 'Stiller',
         given: 'Martin',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'j1gjai0ia2'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'French Domestic Arbitration Law Special Feature',
     'container-title': 'International Lawyer (ABA)',
     page: '749-792',
@@ -5604,9 +4355,6 @@ var sampleReferences =
       {
         family: 'Seppala',
         given: 'Christopher R.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5629,10 +4377,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'The Recruitment and Training of Bureaucrats in the United States',
     'container-title': 'The Annals of the American Academy of Political and Social Science',
     page: '39-44',
@@ -5644,9 +4388,6 @@ var sampleReferences =
       {
         family: 'Sayre',
         given: 'Wallace S.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5669,10 +4410,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Statelessness: Violation or Conduit for Violation of Human Rights?',
     'container-title': 'Human Rights Quarterly',
     page: '106',
@@ -5688,9 +4425,6 @@ var sampleReferences =
       {
         family: 'Walker',
         given: 'Dorothy Jean',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5714,10 +4448,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'TAX PLANNING FOR CAPITAL ASSET DISPOSAL IS COMPLEX YET NECESSARY.',
     page: '5',
     source: 'Zotero',
@@ -5726,40 +4456,24 @@ var sampleReferences =
       {
         family: 'Joy',
         given: 'David',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Vecchio',
         given: 'Stephen C Del',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Clinton',
         given: 'B D Ouglas',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Young',
         given: 'James C',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'zfjciqzn6i'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Concession Agreements: From Private Contract to Public Policy',
     'container-title': 'The Yale Law Journal Company, Inc.',
     'abstract': 'C T. Many concession agreements between governments of developing countries and corporations have failed to produce expected infrastructural, monetary, and efficiency gains. This Note argues that these agreements fail in part because the parties construct them as traditional private contracts. Given their subject matter, their noneconomic focus and purposes, and the ways in which they shape future economic development strategy, international policymakers and business leaders should conceptually and procedurally recast concession agreements as traditional matters of public policy. This reinterpretation will make the agreements more stable and successful by making their costs and benefits more transparent, their drafters more accountable to the populations they are intended to benefit, and their terms more responsive to the concerns of those populations',
@@ -5769,19 +4483,12 @@ var sampleReferences =
         family: 'Nicholas Miranda',
         given: '',
         literal: 'Nicholas Miranda',
-        multi: {
-          _key: {}
-        }
       }
     ],
     id: 'pdzvlgwmyt'
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'From Domestic to Global? Recent Trends in Environmental Liability from a Multi-Level and Comparative Law Perspective',
     'container-title': 'Review of European Community & International Environmental Law',
     page: 'pp. 289-303.',
@@ -5797,9 +4504,6 @@ var sampleReferences =
         family: 'Emanuela Orlando',
         given: '',
         literal: 'Emanuela Orlando',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {
@@ -5815,10 +4519,6 @@ var sampleReferences =
   },
   {
     type: 'article-journal',
-    multi: {
-      main: {},
-      _keys: {}
-    },
     title: 'Blinking on the Bench: How Judges Decide Cases',
     'container-title': 'Cornell Law Review',
     page: '1-44',
@@ -5832,23 +4532,14 @@ var sampleReferences =
       {
         family: 'Guthrie',
         given: 'Chris',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Rachlinski',
         given: 'Jeffrey J.',
-        multi: {
-          _key: {}
-        }
       },
       {
         family: 'Wistrich',
         given: 'Andrew J.',
-        multi: {
-          _key: {}
-        }
       }
     ],
     issued: {

@@ -92,8 +92,9 @@
       margin-left: 2em;
     }
     div.warning {
-      border: 2px solid red;
-      padding: 1em;
+      border: 3px solid red;
+      padding-left: 10px;
+      padding-right: 10px;
     }
 
     div.form {
@@ -291,7 +292,7 @@
 
     var references = ace.edit("references", { mode: "ace/mode/json" });
     references.setOptions(editorOpts);
-    references.setValue(JSON.stringify(sampleReferences[0], null, 2));
+    references.setValue(JSON.stringify(sampleReferences[1], null, 2));
 
     var abbreviations = ace.edit("abbreviations", { mode: "ace/mode/json" });
     abbreviations.setOptions(editorOpts);
@@ -303,9 +304,13 @@
       var resultCitations = document.getElementById("result-citations");
       var resultBibliography = document.getElementById("result-bibliography");
       resultCitations.innerHTML = "";
-      for (var i=0; i < data.warnings.length; i++) {
-        resultCitations.innerHTML +=
-          "<div class=\"warning\">" + data.warnings[i] + "</div>\n";
+      if (data.warnings.length > 0) {
+        var warnings = "<div class=\"warning\">\n"
+        for (var i=0; i < data.warnings.length; i++) {
+          warnings += "<p>" + data.warnings[i] + "</p>\n";
+        }
+        warnings += "</div>\n";
+        resultCitations.innerHTML += warnings;
       }
       for (var i=0; i < data.citations.length; i++) {
         resultCitations.innerHTML +=
