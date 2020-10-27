@@ -255,17 +255,8 @@
 
   <div class="item">
   <label for="citations">Citations<br></label>
-  <div id="citations" class="editor">[
-  [ {"id":"diaz2013"},
-    {"prefix":"see also ",
-     "id":"diaz2016",
-     "locator":251,
-     "label": "page"},
-    {"id":"diaz2015"}
-  ],
-  [ {"id":"etchemendy:concept"}
-  ]
-]</div>
+  <div id="citations" class="editor">
+</div>
   </div>
   <div id="result-bibliography">
   </div>
@@ -293,12 +284,15 @@
     var references = ace.edit("references", { mode: "ace/mode/json" });
     references.setOptions(editorOpts);
     references.setValue(JSON.stringify(sampleReferences[1], null, 2));
+    references.clearSelection();
 
     var abbreviations = ace.edit("abbreviations", { mode: "ace/mode/json" });
     abbreviations.setOptions(editorOpts);
 
     var citations = ace.edit("citations", { mode: "ace/mode/json" });
     citations.setOptions(editorOpts);
+    citations.setValue(JSON.stringify(sampleCitations[0], null, 2));
+    citations.clearSelection();
 
     function renderedCitations(data) {
       var resultCitations = document.getElementById("result-citations");
