@@ -31,19 +31,6 @@
         padding: 1em;
       }
     }
-    @media print {
-      body {
-        background-color: transparent;
-        color: black;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
     p {
     }
     a {
@@ -54,9 +41,6 @@
     }
     img {
       max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.7em;
     }
     ol, ul {
       padding-left: 1.7em;
@@ -151,10 +135,10 @@
 
     div.form {
       display: grid;
+      column-gap: 40px;
       grid-template-columns: auto auto;
     }
     div.item {
-      padding-right: 40px;
       min-width: 20em;
     }
     textarea {
@@ -180,7 +164,19 @@
         font-weight: bold;
         border-radius: 12px;
     }
-
+    #result {
+        border: 1px solid lightgray;
+        padding: 1em;
+    }
+    h2 {
+        color: grey;
+        margin-top: 10px;
+        padding-top: 0;
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
   </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -190,9 +186,16 @@
 </head>
 <body onload="initialize()">
 
-<div>
+  <h2>Demo of the Haskell <a href="https://hackage.haskell.org/package/citeproc">citeproc</a> library</h2>
 
-<label for="lang">Locale</label>
+<div class="form">
+
+  <div class="item">
+  </select>
+  <label for="style">Style</label>
+  <select name="style-name" id="style-name" onchange="loadStyle()">
+  </select>
+  <label for="lang">Locale</label>
   <select name="lang" id="lang" onchange="citeproc()">
     <option value="(style default)">(style default)</option>
     <option value="af-ZA">af-ZA</option>
@@ -248,19 +251,6 @@
     <option value="vi-VN">vi-VN</option>
     <option value="zh-CN">zh-CN</option>
     <option value="zh-TW">zh-TW</option>
-  </select>
-
-
-  <button type="button" onclick="citeproc()">Render</button>
-
-</div>
-
-<div class="form">
-
-  <div class="item">
-  </select>
-  <label for="style">Style</label>
-  <select name="style-name" id="style-name" onchange="loadStyle()">
   </select>
   <br>
   <div id="style" class="editor">
@@ -532,6 +522,15 @@
   ]
 ]</div>
   </div>
+
+<div>
+
+
+  <button type="button" onclick="citeproc()">Render</button>
+
+</div>
+
+
   </div>
 
   <div id="result">
