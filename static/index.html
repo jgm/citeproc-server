@@ -220,7 +220,7 @@
         .catch(error => console.log(error))
         .then(function(data) {
             var style = document.getElementById("style");
-            style.innerHTML = data;
+            style.innerHTML = data.replaceAll("&","&amp;");;
         })
     }
 
