@@ -16,6 +16,7 @@ maintainer:          jgm@berkeley.edu
 -- category:
 build-type:          Simple
 extra-source-files:  CHANGELOG.md
+                     styles/*.csl
 
 executable citeproc-server
   main-is:             Main.hs

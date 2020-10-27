@@ -354,7 +354,7 @@
 
     function loadStyle() {
       var styleName = document.getElementById("style-name").value;
-      fetch('/style?name=' + styleName, {
+      fetch('style?name=' + styleName, {
         headers: { "Content-Type": "text/plain" },
         method: 'GET'
       })
@@ -373,7 +373,7 @@
     }
 
     function getStyleNames() {
-      fetch('/styleNames', {
+      fetch('styleNames', {
         headers: { "Content-Type": "application/json" },
         method: 'GET'
       })
@@ -438,7 +438,7 @@
         lang = langVal;
       }
 
-      fetch('/citeproc', {
+      fetch('citeproc', {
         headers: { "Content-Type": "application/json" },
         method: 'POST',
         body: JSON.stringify({
