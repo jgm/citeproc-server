@@ -291,7 +291,7 @@
 
     var references = ace.edit("references", { mode: "ace/mode/json" });
     references.setOptions(editorOpts);
-    references.setValue(JSON.stringify(getSampleReferences(0), null, 2));
+    references.setValue(JSON.stringify(sampleReferences[0], null, 2));
 
     var abbreviations = ace.edit("abbreviations", { mode: "ace/mode/json" });
     abbreviations.setOptions(editorOpts);

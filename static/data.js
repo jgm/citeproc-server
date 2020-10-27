@@ -1,6 +1,6 @@
 // items 1-7 taken from citeproc-js demo
 
-var items =
+var sampleReferences =
 [
 [
   {
@@ -5875,6 +5875,3 @@ var items =
 ]
 ];
 
-function getSampleReferences(n) {
-    return items[n];
-};
