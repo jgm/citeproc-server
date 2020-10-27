@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE OverloadedStrings #-}
@@ -37,7 +38,7 @@ import Data.List (sort)
 import Control.Monad.Trans (liftIO)
 import Control.Applicative
 import Data.Cache
-
+import Data.FileEmbed (embedDir)
 import Debug.Trace
 
 type CiteprocAPI =
@@ -45,7 +46,7 @@ type CiteprocAPI =
              :> QueryParam "style" Text
              :> QueryParam "lang" Text
              :> Post '[JSON] CiteprocResult
-  :<|> "styleNames" :> Get '[JSON] [FilePath]
+  :<|> "styleNames" :> Get '[JSON] [Text]
   :<|> "style" :> QueryParam "name" Text :> Get '[PlainText] Text
   :<|> Raw
 
@@ -76,10 +77,10 @@ err :: Text -> Handler a
 err t =
   throwError $ err500 { errBody = BL.fromStrict $ TE.encodeUtf8 t }
 
-server1 :: [FilePath] -> StyleCache -> Server CiteprocAPI
-server1 styleNames cache =
+server1 :: StyleCache -> Server CiteprocAPI
+server1 cache =
   citeprocServer
-  :<|> pure styleNames
+  :<|> pure (M.keys styles)
   :<|> getStyle
   :<|> serveDirectoryFileServer "static/"
  where
@@ -132,22 +133,20 @@ server1 styleNames cache =
 
 type StyleCache = Cache Text (Style (CslJson Text))
 
-app :: [FilePath] -> StyleCache -> Application
-app styleNames cache =
-  serve citeprocAPI (server1 styleNames cache)
+styles :: M.Map Text Text
+styles =
+  M.fromList $ map (\(fp,bs) -> (T.pack fp, TE.decodeUtf8 bs))
+                   $(embedDir "styles")
+
+app :: StyleCache -> Application
+app cache =
+  serve citeprocAPI (server1 cache)
 
 getNamedStyle :: Text -> Handler Text
 getNamedStyle s = do
-  mbStyleDir <- liftIO $ lookupEnv "CSL_STYLES"
-  case mbStyleDir of
-    Nothing -> err $ "CSL_STYLES not set"
-    Just d  -> catchError
-                (liftIO
-                 (TIO.readFile (d </> T.unpack s <.> "csl")
-                  <|>
-                  TIO.readFile (d </> "dependent" </> T.unpack s <.> "csl")))
-                (\e ->
-                  err $ "could not get style " <> s <> "\n" <> T.pack (show e))
+  case M.lookup s styles of
+    Nothing -> err $ "style " <> s <> " not found"
+    Just t  -> return t
 
 loadNamedStyle :: Text -> Handler (Style (CslJson Text))
 loadNamedStyle s = do
@@ -162,23 +161,6 @@ loadNamedStyle s = do
 main :: IO ()
 main = do
   (cache :: StyleCache) <- newCache Nothing
-  mbStylePath <- lookupEnv "CSL_STYLES"
-  let getCslFiles fp = do
-        exists <- doesDirectoryExist fp
-        if exists
-           then map (fp </>) . filter ((== ".csl") . takeExtension)
-                 <$> listDirectory fp
-           else return []
-  stylePaths <-
-    case mbStylePath of
-      Just stylePath -> getCslFiles stylePath
-        -- or, to get dependent styles too:
-        -- (++) <$> getCslFiles stylePath
-        --      <*> getCslFiles (stylePath </> "dependent")
-      Nothing -> do
-        TIO.putStrLn "No styles loaded.  Set the CSL_STYLES environment"
-        TIO.putStrLn "variable to the directory containing CSL styles."
-        return []
-  TIO.putStrLn "Serving citeproc API at port 8081"
-  run 8081 (app (sort $ map takeBaseName stylePaths) cache)
+  putStrLn "Serving citeproc API at port 8081"
+  run 8081 (app cache)
 
