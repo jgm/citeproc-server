@@ -162,156 +162,21 @@
       height: 15em;
       white-space: pre-wrap;
     }
+    #style { 
+        border: 1px solid lightgray;
+        margin: auto;
+        height: 300px;
+        width: 95%:
+    }
 
   </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-    <script>
-    function renderedCitations(data) {
-      var result = document.getElementById("result");
-      result.innerHTML = "";
-      for (var i=0; i < data.warnings.length; i++) {
-        result.innerHTML +=
-          "<div class=\"warning\">" + data.warnings[i] + "</div>\n";
-      }
-      for (var i=0; i < data.citations.length; i++) {
-        result.innerHTML +=
-          "<p>" + data.citations[i] + "</p>\n";
-      }
-      var classes = ["csl-bibliography"];
-      switch (data['entry-spacing']) {
-          case 1: classes.push("entry-spacing-1"); break;
-          case 2: classes.push("entry-spacing-2"); break;
-          default:
-      }
-      switch (data['line-spacing']) {
-          case 2:  classes.push("line-spacing-2"); break;
-          default:
-      }
-      if (data['hanging-ident']) {
-        classes.push("hanging");
-      }
-      var bib = "";
-      bib += "<hr>\n";
-      bib += "<div class=\"" + classes.join(" ") + "\">\n"
-      for (var i=0; i < data.bibliography.length; i++) {
-        bib +=
-          "<div id=\"ref-" + data.bibliography[i][0] +
-          "\" class=\"csl-entry\">\n" + data.bibliography[i][1] +
-          "\n</div>\n";
-      }
-      bib += "</div>\n";
-      result.innerHTML += bib;
-    }
-
-    function loadStyle() {
-      var styleName = document.getElementById("style-name").value;
-      fetch('/style?name=' + styleName, {
-        headers: { "Content-Type": "text/plain" },
-        method: 'GET'
-      })
-       .then(function(response) {
-            if (!response.ok) {
-              throw Error(response.statusText);
-            }
-            return response.text()
-        })
-        .catch(error => console.log(error))
-        .then(function(data) {
-            var style = document.getElementById("style");
-            style.innerHTML = data.replaceAll("&","&amp;");;
-            citeproc();
-        })
-    }
-
-    function getStyleNames() {
-      fetch('/styleNames', {
-        headers: { "Content-Type": "application/json" },
-        method: 'GET'
-      })
-       .then(function(response) {
-            if (!response.ok) {
-              throw Error(response.statusText);
-            }
-            return response.json()
-        })
-        .catch(error => console.log(error))
-        .then(function(data) {
-            var styleName = document.getElementById("style-name");
-            var opts = [];
-            for (var i=0; i < data.length; i++) {
-              opts.push("<option value=\"" + data[i] + "\"" +
-                ">" + data[i].slice(0,60) + "</option>");
-            }
-          styleName.innerHTML = opts.join();
-          loadStyle();
-        })
-    }
-
-    function citeproc() {
-      var references = [];
-      var citations = [];
-      var abbreviations = {};
-      var lang;
-      var referencesVal = document.getElementById("references").value.trim();
-      var citationsVal = document.getElementById("citations").value.trim();
-      var abbreviationsVal = document.getElementById("abbreviations").value.trim();
-
-      var langVal = document.getElementById("lang").value.trim();
-
-      if (referencesVal.length > 0) {
-        try {
-          references =
-            JSON.parse(referencesVal);
-        } catch(err) {
-          alert(err);
-        };
-      }
-      if (citationsVal.length > 0) {
-        try {
-          citations =
-            JSON.parse(citationsVal);
-        } catch(err) {
-          alert(err);
-        };
-      }
-      if (abbreviationsVal.length > 0) {
-        try {
-          abbreviations =
-            JSON.parse(abbreviationsVal);
-        } catch(err) {
-          alert(err);
-        };
-      }
-      if (langVal != "(style default)") {
-        lang = langVal;
-      }
-
-      fetch('/citeproc', {
-        headers: { "Content-Type": "application/json" },
-        method: 'POST',
-        body: JSON.stringify({
-          style: document.getElementById("style").value.trim(),
-          abbreviations: abbreviations,
-          lang: lang,
-          references: references,
-          citations: citations,
-        }) })
-        .then(function(response) {
-            if (!response.ok) {
-              throw Error(response.statusText);
-            }
-            return response.json()
-        })
-        .catch(error => console.log(error))
-        .then(data => renderedCitations(data))
-      }
-  </script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
 
 </head>
-<body onload="getStyleNames()">
+<body onload="initialize()">
 
 <div>
 
@@ -386,8 +251,8 @@
   <select name="style-name" id="style-name" onchange="loadStyle()">
   </select>
   <br>
-  <textarea id="style" >
-  </textarea>
+  <div id="style" >
+  </div>
   </div>
 
   <div class="item">
@@ -663,6 +528,160 @@
 
   <div id="result">
   </div>
+  
+
+    <script>
+    var style = ace.edit("style",
+                  { mode: "ace/mode/xml",
+                  });
+    style.setOptions({showLineNumbers: false,
+                      showFoldWidgets: true,
+                      showGutter: false,
+                      theme: "ace/theme/textmate" });
+    function renderedCitations(data) {
+      var result = document.getElementById("result");
+      result.innerHTML = "";
+      for (var i=0; i < data.warnings.length; i++) {
+        result.innerHTML +=
+          "<div class=\"warning\">" + data.warnings[i] + "</div>\n";
+      }
+      for (var i=0; i < data.citations.length; i++) {
+        result.innerHTML +=
+          "<p>" + data.citations[i] + "</p>\n";
+      }
+      var classes = ["csl-bibliography"];
+      switch (data['entry-spacing']) {
+          case 1: classes.push("entry-spacing-1"); break;
+          case 2: classes.push("entry-spacing-2"); break;
+          default:
+      }
+      switch (data['line-spacing']) {
+          case 2:  classes.push("line-spacing-2"); break;
+          default:
+      }
+      if (data['hanging-ident']) {
+        classes.push("hanging");
+      }
+      var bib = "";
+      bib += "<hr>\n";
+      bib += "<div class=\"" + classes.join(" ") + "\">\n"
+      for (var i=0; i < data.bibliography.length; i++) {
+        bib +=
+          "<div id=\"ref-" + data.bibliography[i][0] +
+          "\" class=\"csl-entry\">\n" + data.bibliography[i][1] +
+          "\n</div>\n";
+      }
+      bib += "</div>\n";
+      result.innerHTML += bib;
+    }
+
+    function loadStyle() {
+      var styleName = document.getElementById("style-name").value;
+      fetch('/style?name=' + styleName, {
+        headers: { "Content-Type": "text/plain" },
+        method: 'GET'
+      })
+       .then(function(response) {
+            if (!response.ok) {
+              throw Error(response.statusText);
+            }
+            return response.text()
+        })
+        .catch(error => console.log(error))
+        .then(function(data) {
+            style.setValue(data);
+            citeproc();
+        })
+    }
+
+    function getStyleNames() {
+      fetch('/styleNames', {
+        headers: { "Content-Type": "application/json" },
+        method: 'GET'
+      })
+       .then(function(response) {
+            if (!response.ok) {
+              throw Error(response.statusText);
+            }
+            return response.json()
+        })
+        .catch(error => console.log(error))
+        .then(function(data) {
+            var styleName = document.getElementById("style-name");
+            var opts = [];
+            for (var i=0; i < data.length; i++) {
+              opts.push("<option value=\"" + data[i] + "\"" +
+                ">" + data[i].slice(0,60) + "</option>");
+            }
+          styleName.innerHTML = opts.join();
+          loadStyle();
+        })
+    }
+
+    function citeproc() {
+      var references = [];
+      var citations = [];
+      var abbreviations = {};
+      var lang;
+      var referencesVal = document.getElementById("references").value.trim();
+      var citationsVal = document.getElementById("citations").value.trim();
+      var abbreviationsVal = document.getElementById("abbreviations").value.trim();
+
+      var langVal = document.getElementById("lang").value.trim();
+
+      if (referencesVal.length > 0) {
+        try {
+          references =
+            JSON.parse(referencesVal);
+        } catch(err) {
+          alert(err);
+        };
+      }
+      if (citationsVal.length > 0) {
+        try {
+          citations =
+            JSON.parse(citationsVal);
+        } catch(err) {
+          alert(err);
+        };
+      }
+      if (abbreviationsVal.length > 0) {
+        try {
+          abbreviations =
+            JSON.parse(abbreviationsVal);
+        } catch(err) {
+          alert(err);
+        };
+      }
+      if (langVal != "(style default)") {
+        lang = langVal;
+      }
+
+      fetch('/citeproc', {
+        headers: { "Content-Type": "application/json" },
+        method: 'POST',
+        body: JSON.stringify({
+          style: style.getValue(), // document.getElementById("style").value.trim(),
+          abbreviations: abbreviations,
+          lang: lang,
+          references: references,
+          citations: citations,
+        }) })
+        .then(function(response) {
+            if (!response.ok) {
+              throw Error(response.statusText);
+            }
+            return response.json()
+        })
+        .catch(error => console.log(error))
+        .then(data => renderedCitations(data))
+      }
+
+    function initialize() {
+      getStyleNames();
+    }
+  </script>
+
 
 </body>
 </html>
