@@ -160,6 +160,7 @@
     textarea {
       width: 100%;
       height: 15em;
+      white-space: pre-wrap;
     }
 
   </style>
@@ -204,7 +205,7 @@
       result.innerHTML += bib;
     }
 
-    function fillStyle() {
+    function loadStyle() {
       var styleName = document.getElementById("style-name").value;
       fetch('/style?name=' + styleName, {
         headers: { "Content-Type": "text/plain" },
@@ -219,7 +220,7 @@
         .catch(error => console.log(error))
         .then(function(data) {
             var style = document.getElementById("style");
-            style.innerText = data;
+            style.innerHTML = data;
         })
     }
 
@@ -243,7 +244,7 @@
                 ">" + data[i].slice(0,60) + "</option>");
             }
           styleName.innerHTML = opts.join();
-          fillStyle()
+          loadStyle()
         })
     }
 
@@ -313,7 +314,7 @@
 
 <div>
 
-<label for="lang">Lang: </label>
+<label for="lang">Locale: </label>
   <select name="lang" id="lang">
     <option value="(style default)">(style default)</option>
     <option value="af-ZA">af-ZA</option>
@@ -381,7 +382,7 @@
   <div class="item">
   </select>
   <label for="style">Style:</label>
-  <select name="style-name" id="style-name" onchange="fillStyle()">
+  <select name="style-name" id="style-name" onchange="loadStyle()">
   </select>
   <br>
   <textarea id="style" >
