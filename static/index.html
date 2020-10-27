@@ -251,9 +251,12 @@
       var references = [];
       var citations = [];
       var abbreviations = {};
+      var lang;
       var referencesVal = document.getElementById("references").value.trim();
       var citationsVal = document.getElementById("citations").value.trim();
       var abbreviationsVal = document.getElementById("abbreviations").value.trim();
+
+      var langVal = document.getElementById("lang").value.trim();
 
       if (referencesVal.length > 0) {
         try {
@@ -279,13 +282,17 @@
           alert(err);
         };
       }
+      if (langVal != "(style default)") {
+        lang = langVal;
+      }
+
       fetch('/citeproc', {
         headers: { "Content-Type": "application/json" },
         method: 'POST',
         body: JSON.stringify({
           style: document.getElementById("style").value.trim(),
           abbreviations: abbreviations,
-          lang: document.getElementById("lang").value.trim(),
+          lang: lang,
           references: references,
           citations: citations,
         }) })
@@ -308,6 +315,7 @@
 
 <label for="lang">Lang: </label>
   <select name="lang" id="lang">
+    <option value="(style default)">(style default)</option>
     <option value="af-ZA">af-ZA</option>
     <option value="ar">ar</option>
     <option value="bg-BG">bg-BG</option>
@@ -397,9 +405,238 @@
   <div class="item">
   <label for="references">References:<br></label>
   <textarea id="references" >
-[ {"id":"diaz2013","type":"article-journal","title":"What Is Social Construction?","container-title":"European Journal of Philosophy","page":"1-16","URL":"http://onlinelibrary.wiley.com/doi/10.1111/ejop.12033/abstract","DOI":"10.1111/ejop.12033","ISSN":"1468-0378","language":"en","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2013,5,1]]},"accessed":{"date-parts":[[2015,11,14]]},"container-title-short":"Eur J Philos"}
-, {"id":"diaz2015","type":"article-journal","title":"In Defence of Historical Constructivism about Races","container-title":"Ergo, an Open Access Journal of Philosophy","volume":"2","URL":"http://hdl.handle.net/2027/spo.12405314.0002.021","DOI":"10.3998/ergo.12405314.0002.021","ISSN":"2330-4014","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2015]]}}
-, {"id":"diaz2016","type":"article-journal","title":"<i>Woman</i> as a Politically Significant Term: A Solution to the Puzzle","container-title":"Hypatia","page":"245-258","URL":"http://onlinelibrary.wiley.com.uaccess.univie.ac.at/doi/10.1111/hypa.12234/abstract","DOI":"10.1111/hypa.12234","ISSN":"1527-2001","title-short":"<i>Woman</i> as a Politically Significant Term","language":"en","author":[{"family":"Díaz-León","given":"Esa"}],"issued":{"date-parts":[[2016,2,1]]},"accessed":{"date-parts":[[2016,2,18]]},"container-title-short":"Hypatia"}
+[
+  {
+    "id": "diaz2013",
+    "type": "article-journal",
+    "title": "What Is Social Construction?",
+    "container-title": "European Journal of Philosophy",
+    "page": "1-16",
+    "URL": "http://onlinelibrary.wiley.com/doi/10.1111/ejop.12033/abstract",
+    "DOI": "10.1111/ejop.12033",
+    "ISSN": "1468-0378",
+    "language": "en",
+    "author": [
+      {
+        "family": "Díaz-León",
+        "given": "Esa"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2013,
+          5,
+          1
+        ]
+      ]
+    },
+    "accessed": {
+      "date-parts": [
+        [
+          2015,
+          11,
+          14
+        ]
+      ]
+    },
+    "container-title-short": "Eur J Philos"
+  },
+  {
+    "id": "diaz2015",
+    "type": "article-journal",
+    "title": "In Defence of Historical Constructivism about Races",
+    "container-title": "Ergo, an Open Access Journal of Philosophy",
+    "volume": "2",
+    "URL": "http://hdl.handle.net/2027/spo.12405314.0002.021",
+    "DOI": "10.3998/ergo.12405314.0002.021",
+    "ISSN": "2330-4014",
+    "author": [
+      {
+        "family": "Díaz-León",
+        "given": "Esa"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    }
+  },
+  {
+    "id": "diaz2016",
+    "type": "article-journal",
+    "title": "<i>Woman</i> as a Politically Significant Term: A Solution to the Puzzle",
+    "container-title": "Hypatia",
+    "page": "245-258",
+    "URL": "http://onlinelibrary.wiley.com.uaccess.univie.ac.at/doi/10.1111/hypa.12234/abstract",
+    "DOI": "10.1111/hypa.12234",
+    "ISSN": "1527-2001",
+    "title-short": "<i>Woman</i> as a Politically Significant Term",
+    "language": "en",
+    "author": [
+      {
+        "family": "Díaz-León",
+        "given": "Esa"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          2,
+          1
+        ]
+      ]
+    },
+    "accessed": {
+      "date-parts": [
+        [
+          2016,
+          2,
+          18
+        ]
+      ]
+    },
+    "container-title-short": "Hypatia"
+  },
+  {
+    "URL": "https://plato.stanford.edu/archives/win2014/entries/conditionals/",
+    "author": [
+      {
+        "family": "Edgington",
+        "given": "Dorothy"
+      }
+    ],
+    "container-title": "The Stanford Encyclopedia of Philosophy",
+    "edition": "Winter 2014",
+    "editor": [
+      {
+        "family": "Zalta",
+        "given": "Edward N."
+      }
+    ],
+    "id": "edgington:conditionals",
+    "issued": {
+      "date-parts": [
+        [
+          2014
+        ]
+      ]
+    },
+    "publisher": "Metaphysics Research Lab, Stanford University",
+    "title": "Indicative conditionals",
+    "type": "chapter"
+  },
+  {
+    "author": [
+      {
+        "family": "Edgington",
+        "given": "Dorothy"
+      }
+    ],
+    "container-title": "A Philosophical Companion to First-order Logic",
+    "editor": [
+      {
+        "family": "Hughes",
+        "given": "R. I. G."
+      }
+    ],
+    "id": "edgington:do",
+    "issued": {
+      "date-parts": [
+        [
+          1993
+        ]
+      ]
+    },
+    "page": "28-49",
+    "publisher": "Hackett",
+    "publisher-place": "Indianapolis",
+    "title": "Do conditionals have truth-conditions?",
+    "type": "chapter"
+  },
+  {
+    "author": [
+      {
+        "family": "Edgington",
+        "given": "Dorothy"
+      }
+    ],
+    "container-title": "Vagueness: A reader",
+    "editor": [
+      {
+        "family": "Keefe",
+        "given": "Rosanna"
+      },
+      {
+        "family": "Smith",
+        "given": "Peter"
+      }
+    ],
+    "id": "edgington:vagueness",
+    "issued": {
+      "date-parts": [
+        [
+          1997
+        ]
+      ]
+    },
+    "page": "294-316",
+    "publisher": "MIT",
+    "publisher-place": "Cambridge, MA",
+    "title": "Vagueness by degrees",
+    "type": "chapter"
+  },
+  {
+    "author": [
+      {
+        "family": "Etchemendy",
+        "given": "John"
+      }
+    ],
+    "id": "etchemendy:concept",
+    "issued": {
+      "date-parts": [
+        [
+          1990
+        ]
+      ]
+    },
+    "publisher": "Harvard University Press",
+    "publisher-place": "Cambridge, MA",
+    "title": "The concept of logical consequence",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "Etchemendy",
+        "given": "John"
+      }
+    ],
+    "container-title": "New Essays on Tarski and Philosophy",
+    "editor": [
+      {
+        "family": "Patterson",
+        "given": "Douglas"
+      }
+    ],
+    "id": "etchemendy:reflections",
+    "issued": {
+      "date-parts": [
+        [
+          2008
+        ]
+      ]
+    },
+    "publisher": "Oxford University Press",
+    "publisher-place": "Oxford",
+    "title": "Reflections on consequence",
+    "type": "chapter"
+  }
 ]
   </textarea>
   </div>
@@ -408,7 +645,15 @@
   <label for="citations">Citations:<br></label>
   <textarea id="citations" >
 [
-  [{"id":"diaz2013"}]
+  [ {"id":"diaz2013"},
+    {"prefix":"see also ",
+     "id":"diaz2016",
+     "locator":251,
+     "label": "page"},
+    {"id":"diaz2015"}
+  ],
+  [ {"id":"etchemendy:concept"}
+  ]
 ]
   </textarea>
   </div>
