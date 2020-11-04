@@ -137,8 +137,16 @@ type StyleCache = Cache Text (Style (CslJson Text))
 
 styles :: M.Map Text Text
 styles =
-  M.fromList $ map (\(fp,bs) -> (T.pack fp, TE.decodeUtf8 bs))
+  M.fromList $ map (\(_fp,bs) ->
+                     let t = TE.decodeUtf8 bs
+                      in (extractTitle t, t))
                    $(embedDir "styles")
+
+extractTitle :: Text -> Text
+extractTitle t =
+  case T.breakOnAll "<title>" t of
+    [] -> "Untitled"
+    ((_,y):_) -> T.takeWhile (/='<') $ T.drop 7 y
 
 app :: FilePath -> StyleCache -> Application
 app staticDir cache =
