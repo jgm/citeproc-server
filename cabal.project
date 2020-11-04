@@ -3,5 +3,5 @@ packages: citeproc-server.cabal
 source-repository-package
     type: git
     location: https://github.com/jgm/citeproc
-    tag: 395134fcfd3ae86d6d64d2a90aea99f9d7721d01
+    tag: 4e4c59ad6c6669de910e636d5718beb87f5acf33
 
