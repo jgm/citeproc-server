@@ -1,5 +1,5 @@
 all:
-	cabal install --install-method=copy
+	cabal install --install-method=copy --installdir=.
 
 update-styles:
 	mkdir -p styles; \
