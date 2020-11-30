@@ -1,5 +1,5 @@
 all:
-	cabal install --install-method=copy --installdir=.
+	cabal install --install-method=copy --installdir=. --overwrite-policy=always
 
 update-styles:
 	mkdir -p styles; \
