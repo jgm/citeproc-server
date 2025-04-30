@@ -1,5 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE DataKinds #-}
@@ -21,8 +22,9 @@ import qualified Data.Text.IO as TIO
 import Servant.API
 import Servant.Server.StaticFiles
 import Servant
+import Safe (readMay)
 import Network.Wai
-import Network.Wai.Handler.Warp
+import Network.Wai.Handler.Warp as Warp
 import Data.Maybe
 import Data.Text.Encoding as TE
 import qualified Data.ByteString.Lazy as BL
@@ -39,6 +41,7 @@ import Control.Monad.Trans (liftIO)
 import Control.Applicative
 import Data.Cache
 import Data.FileEmbed (embedDir)
+import Options.Applicative
 import Debug.Trace
 
 type CiteprocAPI =
@@ -86,8 +89,7 @@ server1 staticDir cache =
 
  where
 
-  getStyle Nothing = err $ "No name parameter given"
-  getStyle (Just name) = getNamedStyle name
+  getStyle name = getNamedStyle name
 
   citeprocServer inputs mbSty mbLang = do
     style <- case mbSty <|> inputsStyle inputs of
@@ -110,7 +112,12 @@ server1 staticDir cache =
                     Left e -> err $ prettyCiteprocError e
                     Right sty -> return sty
                Nothing -> err $ "No style specified"
-    let lang = (parseLang <$> mbLang) <|> inputsLang inputs
+    let lang = (mbLang >>= \case
+                   Nothing -> Nothing
+                   Just l -> case parseLang l of
+                               Left _ -> Nothing
+                               Right l' -> Just l')
+                  <|> inputsLang inputs
     let abbreviations = inputsAbbreviations inputs
     let references = fromMaybe [] $ inputsReferences inputs
     let citations = fromMaybe [] $ inputsCitations inputs
@@ -140,7 +147,7 @@ styles =
   M.fromList $ map (\(_fp,bs) ->
                      let t = TE.decodeUtf8 bs
                       in (extractTitle t, t))
-                   $(embedDir "styles")
+                   [] -- $(embedDir "styles")
 
 extractTitle :: Text -> Text
 extractTitle t =
@@ -168,10 +175,36 @@ loadNamedStyle s = do
     Left e -> err $ prettyCiteprocError e
     Right sty -> return sty
 
+data Opts = Opts
+  { port      :: Int
+  , staticDir :: FilePath
+  }
+
+optsSpec :: Parser Opts
+optsSpec = Opts
+      <$> option (maybeReader readMay)
+          ( long "port"
+         <> short 'p'
+         <> metavar "NUMBER"
+         <> showDefault
+         <> value 8081
+         <> help "Port on which to run the server" )
+      <*> option (maybeReader readMay)
+         ( long "static-dir"
+         <> short 's'
+         <> metavar "PATH"
+         <> showDefault
+         <> value "static"
+         <> help "Directory from which to serve static content" )
+
 main :: IO ()
 main = do
   (cache :: StyleCache) <- newCache Nothing
-  staticDir <- getEnv "CITEPROC_STATIC" <|> pure "static"
-  putStrLn "Serving citeproc API at port 8081"
-  run 8081 (app staticDir cache)
-
+  let options = info (optsSpec <**> helper)
+        ( fullDesc
+       <> progDesc "Run a server for citeproc"
+       <> header "citeproc-server - an HTTP server for citeproc" )
+  opts <- execParser options
+  putStrLn $ "Starting server on port " <> show (port opts)
+  let settings = Warp.setPort (port opts) Warp.defaultSettings
+  Warp.runSettings settings (app (staticDir opts) cache)
