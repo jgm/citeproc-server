@@ -150,7 +150,7 @@ styles =
   M.fromList $ map (\(_fp,bs) ->
                      let t = TE.decodeUtf8 bs
                       in (extractTitle t, t))
-                   [] -- $(embedDir "styles")
+                   $(embedDir "styles")
 
 extractTitle :: Text -> Text
 extractTitle t =
