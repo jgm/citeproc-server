@@ -16,7 +16,6 @@ import Data.Aeson
 import Control.Monad.Except
 import Citeproc
 import Citeproc.CslJson
-import Data.FileEmbed (embedFile)
 import Data.Text (Text)
 import qualified Data.Text as T
 import Servant.API
@@ -28,34 +27,11 @@ import Data.Text.Encoding as TE
 import qualified Data.ByteString.Lazy as BL
 import Control.Applicative
 import Options.Applicative hiding (style)
-import Data.ByteString (ByteString)
-import Network.HTTP.Media ((//), (/:))
-
-
-data JavaScript
-
--- Instance for content negotiation
-instance Accept JavaScript where
-  contentType _ = "application" // "javascript"
-
--- Instance for rendering
-instance MimeRender JavaScript ByteString where
-  mimeRender _ = BL.fromStrict
-
-data HTML
-instance Accept HTML where
-  contentType _ = "text" // "html" /: ("charset", "utf-8")
-instance MimeRender HTML ByteString where
-  mimeRender _ = BL.fromStrict
 
 type CiteprocAPI =
-  "citeproc" :> ReqBody '[JSON] (Inputs (CslJson Text))
-             :> QueryParam "lang" Text
-             :> Post '[JSON] CiteprocResult
-  :<|>
-  "data.js" :> Get '[JavaScript] ByteString
-  :<|>
-  Get '[HTML] ByteString
+  ReqBody '[JSON] (Inputs (CslJson Text))
+        :> QueryParam "lang" Text
+        :> Post '[JSON] CiteprocResult
 
 data CiteprocResult =
   CiteprocResult
@@ -85,16 +61,9 @@ err t =
   throwError $ err500 { errBody = BL.fromStrict $ TE.encodeUtf8 t }
 
 server1 :: Server CiteprocAPI
-server1 =
-       citeprocServer
-  :<|> pure dataJs
-  :<|> pure indexHtml
+server1 = citeprocServer
 
  where
-
-  indexHtml = $(embedFile "static/index.html")
-
-  dataJs = $(embedFile "static/data.js")
 
   citeprocServer :: Inputs (CslJson Text)
                  -> Maybe Text

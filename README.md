@@ -5,7 +5,7 @@ specify the port.
 
 ## Request
 
-A POST request will be accepted at `/citeproc`. The request body
+A POST request will be accepted at `/`. The request body
 should be a JSON document with the following structure:
 
 ``` json

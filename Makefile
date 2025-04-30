@@ -1,8 +1,7 @@
 all:
-	cabal install --install-method=copy --installdir=. --overwrite-policy=always
+	cabal build
 
 clean:
-	rm -f ./citeproc-server
 	cabal clean
 
-.PHONY: all clean
+.PHONY: all clean upload

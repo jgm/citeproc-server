@@ -3100,7 +3100,7 @@
         lang = langVal;
       }
 
-      fetch('citeproc', {
+      fetch('/citeproc', {
         headers: { "Content-Type": "application/json" },
         method: 'POST',
         body: JSON.stringify({
@@ -3119,10 +3119,6 @@
         .catch(error => console.log(error))
         .then(data => renderedCitations(data))
       }
-
-    function initialize() {
-      getStyleNames();
-    }
   </script>
 
 
