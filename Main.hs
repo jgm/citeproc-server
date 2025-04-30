@@ -1,6 +1,4 @@
-{-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE DataKinds #-}
@@ -39,18 +37,13 @@ import Data.Char (isAlphaNum)
 import Data.List (sort)
 import Control.Monad.Trans (liftIO)
 import Control.Applicative
-import Data.Cache
-import Data.FileEmbed (embedDir)
 import Options.Applicative
 import Debug.Trace
 
 type CiteprocAPI =
   "citeproc" :> ReqBody '[JSON] (Inputs (CslJson Text))
-             :> QueryParam "style" Text
              :> QueryParam "lang" Text
              :> Post '[JSON] CiteprocResult
-  :<|> "styleNames" :> Get '[JSON] [Text]
-  :<|> "style" :> QueryParam "name" Text :> Get '[PlainText] Text
   :<|> Raw
 
 data CiteprocResult =
@@ -80,43 +73,25 @@ err :: Text -> Handler a
 err t =
   throwError $ err500 { errBody = BL.fromStrict $ TE.encodeUtf8 t }
 
-server1 :: FilePath -> StyleCache -> Server CiteprocAPI
-server1 staticDir cache =
+server1 :: FilePath -> Server CiteprocAPI
+server1 staticDir =
   citeprocServer
-  :<|> pure (M.keys styles)
-  :<|> getStyle
   :<|> serveDirectoryFileServer staticDir
 
  where
 
-  getStyle Nothing = err $ "No name parameter given"
-  getStyle (Just name) = getNamedStyle name
-
   citeprocServer :: Inputs (CslJson Text)
                  -> Maybe Text
-                 -> Maybe Text
                  -> Handler CiteprocResult
-  citeprocServer inputs mbSty mbLang = do
-    style <- case mbSty <|> inputsStyle inputs of
-               Just s | T.all (\c -> isAlphaNum c || c == '-') s -> do
-                 cachedSty <- liftIO $ Data.Cache.lookup cache s
-                 case cachedSty of
-                   Just sty -> return sty
-                   Nothing  -> do
-                     sty <- loadNamedStyle s
-                     liftIO $ do
-                       Data.Cache.insert cache s sty
-                       csize <- Data.Cache.size cache
-                       when (csize > 100) $
-                         Data.Cache.purge cache
-                     return sty
+  citeprocServer inputs mbLang = do
+    style <- case inputsStyle inputs of
                Just s -> do -- parse XML
                  parseResult <- parseStyle
                     (getNamedStyle . T.takeWhileEnd (/='/')) s
                  case parseResult of
                     Left e -> err $ prettyCiteprocError e
                     Right sty -> return sty
-               Nothing -> err $ "No style specified"
+               Nothing -> err "No style specified"
     let lang = (mbLang >>= \l -> case parseLang l of
                                    Left _ -> Nothing
                                    Right l' -> Just l')
@@ -143,40 +118,12 @@ server1 staticDir cache =
                                               styleLineSpacing sopts
              }
 
-type StyleCache = Cache Text (Style (CslJson Text))
-
-styles :: M.Map Text Text
-styles =
-  M.fromList $ map (\(_fp,bs) ->
-                     let t = TE.decodeUtf8 bs
-                      in (extractTitle t, t))
-                   $(embedDir "styles")
-
-extractTitle :: Text -> Text
-extractTitle t =
-  case T.breakOnAll "<title>" t of
-    [] -> "Untitled"
-    ((_,y):_) -> T.takeWhile (/='<') $ T.drop 7 y
-
-app :: FilePath -> StyleCache -> Application
-app staticDir cache =
-  serve citeprocAPI (server1 staticDir cache)
+app :: FilePath -> Application
+app staticDir =
+  serve citeprocAPI (server1 staticDir)
 
 getNamedStyle :: Text -> Handler Text
-getNamedStyle s = do
-  case M.lookup s styles of
-    Nothing -> err $ "style " <> s <> " not found"
-    Just t  -> return t
-
-loadNamedStyle :: Text -> Handler (Style (CslJson Text))
-loadNamedStyle s = do
-  txt <- getNamedStyle s
-  parseResult <- parseStyle
-                   (getNamedStyle . T.takeWhileEnd (/='/'))
-                   txt
-  case parseResult of
-    Left e -> err $ prettyCiteprocError e
-    Right sty -> return sty
+getNamedStyle s = err $ "style " <> s <> " not found"
 
 data Opts = Opts
   { port      :: Int
@@ -202,7 +149,6 @@ optsSpec = Opts
 
 main :: IO ()
 main = do
-  (cache :: StyleCache) <- newCache Nothing
   let options = info (optsSpec <**> helper)
         ( fullDesc
        <> progDesc "Run a server for citeproc"
@@ -210,4 +156,4 @@ main = do
   opts <- execParser options
   putStrLn $ "Starting server on port " <> show (port opts)
   let settings = Warp.setPort (port opts) Warp.defaultSettings
-  Warp.runSettings settings (app (staticDir opts) cache)
+  Warp.runSettings settings (app (staticDir opts))

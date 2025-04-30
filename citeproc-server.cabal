@@ -21,11 +21,7 @@ build-type:          Simple
 extra-source-files:  CHANGELOG.md
                      static/data.js
                      static/index.html
-                     styles/chicago-author-date.csl
-                     styles/chicago-fullnote-bibliography-with-ibid.csl
-                     styles/nature.csl
-                     styles/apa.csl
-                     styles/archeologie-medievale.csl
+
 Source-repository head
   type:              git
   location:          https://github.com/jgm/citeproc-server.git
@@ -55,3 +51,4 @@ executable citeproc-server
 
   hs-source-dirs:      .
   default-language:    Haskell2010
+  ghc-options:         -Wall
