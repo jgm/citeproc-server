@@ -1,8 +1,7 @@
 # citeproc-server
 
-A web API wrapping the Haskell citeproc library.  Use `--port` to
-specify the port, `--static-dir` to specify the static directory
-containing `index.html` and `data.js`.
+A web API wrapping the Haskell citeproc library.  Use `--port` or `-p` to
+specify the port.
 
 ## Request
 

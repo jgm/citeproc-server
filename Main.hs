@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE OverloadedStrings #-}
@@ -14,11 +15,12 @@ import Control.Monad
 import Control.Monad.Except
 import Citeproc
 import Citeproc.CslJson
+import Data.FileEmbed (embedDir)
 import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.IO as TIO
 import Servant.API
-import Servant.Server.StaticFiles
+import Servant.Server.StaticFiles (serveDirectoryEmbedded)
 import Servant
 import Safe (readMay)
 import Network.Wai
@@ -73,12 +75,14 @@ err :: Text -> Handler a
 err t =
   throwError $ err500 { errBody = BL.fromStrict $ TE.encodeUtf8 t }
 
-server1 :: FilePath -> Server CiteprocAPI
-server1 staticDir =
+server1 :: Server CiteprocAPI
+server1 =
   citeprocServer
-  :<|> serveDirectoryFileServer staticDir
+  :<|> serveDirectoryEmbedded staticDir
 
  where
+
+  staticDir = $(embedDir "static")
 
   citeprocServer :: Inputs (CslJson Text)
                  -> Maybe Text
@@ -118,16 +122,14 @@ server1 staticDir =
                                               styleLineSpacing sopts
              }
 
-app :: FilePath -> Application
-app staticDir =
-  serve citeprocAPI (server1 staticDir)
+app :: Application
+app = serve citeprocAPI server1
 
 getNamedStyle :: Text -> Handler Text
 getNamedStyle s = err $ "style " <> s <> " not found"
 
 data Opts = Opts
   { port      :: Int
-  , staticDir :: FilePath
   }
 
 optsSpec :: Parser Opts
@@ -139,13 +141,6 @@ optsSpec = Opts
          <> showDefault
          <> value 8081
          <> help "Port on which to run the server" )
-      <*> option (maybeReader readMay)
-         ( long "static-dir"
-         <> short 's'
-         <> metavar "PATH"
-         <> showDefault
-         <> value "static"
-         <> help "Directory from which to serve static content" )
 
 main :: IO ()
 main = do
@@ -156,4 +151,4 @@ main = do
   opts <- execParser options
   putStrLn $ "Starting server on port " <> show (port opts)
   let settings = Warp.setPort (port opts) Warp.defaultSettings
-  Warp.runSettings settings (app (staticDir opts))
+  Warp.runSettings settings app
