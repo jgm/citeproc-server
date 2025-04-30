@@ -89,8 +89,13 @@ server1 staticDir cache =
 
  where
 
-  getStyle name = getNamedStyle name
+  getStyle Nothing = err $ "No name parameter given"
+  getStyle (Just name) = getNamedStyle name
 
+  citeprocServer :: Inputs (CslJson Text)
+                 -> Maybe Text
+                 -> Maybe Text
+                 -> Handler CiteprocResult
   citeprocServer inputs mbSty mbLang = do
     style <- case mbSty <|> inputsStyle inputs of
                Just s | T.all (\c -> isAlphaNum c || c == '-') s -> do
@@ -112,11 +117,9 @@ server1 staticDir cache =
                     Left e -> err $ prettyCiteprocError e
                     Right sty -> return sty
                Nothing -> err $ "No style specified"
-    let lang = (mbLang >>= \case
-                   Nothing -> Nothing
-                   Just l -> case parseLang l of
-                               Left _ -> Nothing
-                               Right l' -> Just l')
+    let lang = (mbLang >>= \l -> case parseLang l of
+                                   Left _ -> Nothing
+                                   Right l' -> Just l')
                   <|> inputsLang inputs
     let abbreviations = inputsAbbreviations inputs
     let references = fromMaybe [] $ inputsReferences inputs
