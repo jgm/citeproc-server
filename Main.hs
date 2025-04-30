@@ -1,6 +1,8 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE TypeOperators #-}
@@ -14,7 +16,7 @@ import Data.Aeson
 import Control.Monad.Except
 import Citeproc
 import Citeproc.CslJson
-import Data.FileEmbed (embedDir)
+import Data.FileEmbed (embedFile)
 import Data.Text (Text)
 import qualified Data.Text as T
 import Servant.API
@@ -26,12 +28,34 @@ import Data.Text.Encoding as TE
 import qualified Data.ByteString.Lazy as BL
 import Control.Applicative
 import Options.Applicative hiding (style)
+import Data.ByteString (ByteString)
+import Network.HTTP.Media ((//), (/:))
+
+
+data JavaScript
+
+-- Instance for content negotiation
+instance Accept JavaScript where
+  contentType _ = "application" // "javascript"
+
+-- Instance for rendering
+instance MimeRender JavaScript ByteString where
+  mimeRender _ = BL.fromStrict
+
+data HTML
+instance Accept HTML where
+  contentType _ = "text" // "html" /: ("charset", "utf-8")
+instance MimeRender HTML ByteString where
+  mimeRender _ = BL.fromStrict
 
 type CiteprocAPI =
   "citeproc" :> ReqBody '[JSON] (Inputs (CslJson Text))
              :> QueryParam "lang" Text
              :> Post '[JSON] CiteprocResult
-  :<|> Raw
+  :<|>
+  "data.js" :> Get '[JavaScript] ByteString
+  :<|>
+  Get '[HTML] ByteString
 
 data CiteprocResult =
   CiteprocResult
@@ -62,12 +86,15 @@ err t =
 
 server1 :: Server CiteprocAPI
 server1 =
-  citeprocServer
-  :<|> serveDirectoryEmbedded staticDir
+       citeprocServer
+  :<|> pure dataJs
+  :<|> pure indexHtml
 
  where
 
-  staticDir = $(embedDir "static")
+  indexHtml = $(embedFile "static/index.html")
+
+  dataJs = $(embedFile "static/data.js")
 
   citeprocServer :: Inputs (CslJson Text)
                  -> Maybe Text
