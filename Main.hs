@@ -11,36 +11,21 @@ import Prelude ()
 import Prelude.Compat
 
 import Data.Aeson
-import Control.Monad
 import Control.Monad.Except
 import Citeproc
 import Citeproc.CslJson
 import Data.FileEmbed (embedDir)
 import Data.Text (Text)
 import qualified Data.Text as T
-import qualified Data.Text.IO as TIO
 import Servant.API
-import Servant.Server.StaticFiles (serveDirectoryEmbedded)
 import Servant
 import Safe (readMay)
-import Network.Wai
 import Network.Wai.Handler.Warp as Warp
 import Data.Maybe
 import Data.Text.Encoding as TE
 import qualified Data.ByteString.Lazy as BL
-import Data.ByteString (ByteString)
-import System.FilePath
-import qualified Data.Map as M
-import System.Environment
-import System.Exit
-import System.Directory (listDirectory, doesDirectoryExist)
-import System.IO (stderr)
-import Data.Char (isAlphaNum)
-import Data.List (sort)
-import Control.Monad.Trans (liftIO)
 import Control.Applicative
 import Options.Applicative
-import Debug.Trace
 
 type CiteprocAPI =
   "citeproc" :> ReqBody '[JSON] (Inputs (CslJson Text))
