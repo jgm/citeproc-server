@@ -25,7 +25,7 @@ import Data.Maybe
 import Data.Text.Encoding as TE
 import qualified Data.ByteString.Lazy as BL
 import Control.Applicative
-import Options.Applicative
+import Options.Applicative hiding (style)
 
 type CiteprocAPI =
   "citeproc" :> ReqBody '[JSON] (Inputs (CslJson Text))
